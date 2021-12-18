@@ -1,13 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.wsr.wsr_connect.LoginScreen">
-
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="anchorPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="0.0" minWidth="0.0"
+            prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;"
+            xmlns="http://javafx.com/javafx/17" fx:controller="ru.wsr.wsr_connect.signComponents.loginScreenController">
+   <children>
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/images/upper_light_wave.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/images/upper_dark_wave.png" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="SRC_ATOP" fitHeight="1080.0" fitWidth="1920.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/images/lower_dark_wave.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="210.0" layoutX="165.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/images/logo_hand_with_phone.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <VBox fx:id="boxBox" layoutX="210.0" layoutY="500.0" prefHeight="600.0" prefWidth="600.0" styleClass="boxBox" stylesheets="@../../../../styles/styles.css">
+         <children>
+            <VBox fx:id="textFieldsBox" styleClass="textFieldsBox" stylesheets="@../../../../styles/styles.css">
+               <children>
+                  <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                     <font>
+                        <Font name="Calibri" size="45.0" />
+                     </font>
+                  </Text>
+                  <TextField styleClass="textFields" stylesheets="@../../../../styles/styles.css">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     <font>
+                        <Font name="Calibri" size="45.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <PasswordField styleClass="textFields" stylesheets="@../../../../styles/styles.css">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/styles.css">
+               <children>
+                  <Button mnemonicParsing="false" stylesheets="@../../../../styles/styles.css" text="Sign In" textFill="#2196f3">
+                     <font>
+                        <Font name="Calibri" size="45.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/styles.css" text="Sign Up" textFill="#2196f3">
+                     <font>
+                        <Font name="Calibri" size="45.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
