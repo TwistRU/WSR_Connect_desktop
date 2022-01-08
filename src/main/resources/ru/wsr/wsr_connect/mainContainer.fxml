@@ -3,6 +3,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.layout.BorderPane?>
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ru.wsr.wsr_connect.MainContainer">
+    <children>
+        <fx:include source="mainScreen.fxml"/>
+<!--        <fx:include source="signComponents/loginScreen.fxml"/>-->
+    </children>
 </AnchorPane>

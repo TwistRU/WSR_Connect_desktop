@@ -3,12 +3,20 @@ package ru.wsr.wsr_connect
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
+import javafx.stage.Screen
 import javafx.stage.Stage
+import java.awt.GraphicsEnvironment
 
-class WSRConnectApplication : Application() {
+
+open class WSRConnectApplication : Application() {
+
     override fun start(stage: Stage) {
+        val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
+        val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
         val fxmlLoader = FXMLLoader(WSRConnectApplication::class.java.getResource("mainContainer.fxml"))
-        val scene = Scene(fxmlLoader.load(), 1080.0, 720.0)
+        val scene = Scene(fxmlLoader.load(), screenWidth * 0.75, screenHeight * 0.75)
+
+
         stage.title = "WSR Connect"
         stage.scene = scene
         stage.show()

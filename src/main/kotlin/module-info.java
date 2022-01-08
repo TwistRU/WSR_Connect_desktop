@@ -10,7 +10,11 @@ module ru.wsr.wsr_connect {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.desktop;
 
     opens ru.wsr.wsr_connect to javafx.fxml;
+    opens ru.wsr.wsr_connect.signComponents to javafx.fxml;
+
     exports ru.wsr.wsr_connect;
+    exports ru.wsr.wsr_connect.signComponents;
 }

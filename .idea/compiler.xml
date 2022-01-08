@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="WSR Connect" target="17" />
+      <module name="WSR Connect" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
