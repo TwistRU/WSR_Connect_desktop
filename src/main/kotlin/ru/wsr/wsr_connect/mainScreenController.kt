@@ -2,6 +2,7 @@ package ru.wsr.wsr_connect
 
 import javafx.fxml.FXML
 import javafx.scene.control.Button
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
@@ -28,7 +29,7 @@ class mainScreenController {
     private lateinit var gearButton: Button
 
     @FXML
-    private lateinit var globalBox: HBox
+    private lateinit var globalBox: BorderPane
 
     @FXML
     private lateinit var messagesButton: Button
@@ -38,18 +39,12 @@ class mainScreenController {
 
     @FXML
     fun initialize() {
-        val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
-        val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
-        val scale = Scale()
-        scale.setPivotX(0.0)
-        scale.setPivotY(0.0)
-        scale.x = screenWidth * 0.75 / 1920.0
-        scale.y = screenHeight * 0.75 / 1080.0
-        globalBox.transforms.add(scale)
-//        globalBox.minWidthProperty().bind(globalBox.heightProperty())
-//        globalBox.maxWidthProperty().bind(globalBox.heightProperty())
 
+        makeButtons()
 
+    }
+
+    fun makeButtons(){
         val messages = Region()
         messages.styleClass.add("messages")
         messagesButton.setGraphic(messages)
@@ -65,9 +60,6 @@ class mainScreenController {
         val gear = Region()
         gear.styleClass.add("gear")
         gearButton.setGraphic(gear)
-
     }
-
-
 
 }
