@@ -6,6 +6,7 @@ import javafx.scene.Scene
 import javafx.stage.Screen
 import javafx.stage.Stage
 import java.awt.GraphicsEnvironment
+import java.awt.SystemColor.control
 
 
 open class WSRConnectApplication : Application() {
@@ -13,8 +14,8 @@ open class WSRConnectApplication : Application() {
     override fun start(stage: Stage) {
         val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
         val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
-        val fxmlLoader = FXMLLoader(WSRConnectApplication::class.java.getResource("mainContainer.fxml"))
-        val scene = Scene(fxmlLoader.load(), screenWidth * 0.75, screenHeight * 0.75)
+        val fxmlLoader = MainContainer()
+        val scene = Scene(fxmlLoader, screenWidth * 0.75, screenHeight * 0.75)
 
 
         stage.title = "WSR Connect"

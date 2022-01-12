@@ -1,6 +1,7 @@
 package ru.wsr.wsr_connect
 
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
@@ -11,7 +12,7 @@ import javafx.stage.Screen
 import java.net.URL
 import java.util.*
 
-class mainScreenController {
+class mainScreenController : BorderPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -44,22 +45,29 @@ class mainScreenController {
 
     }
 
-    fun makeButtons(){
+    private fun makeButtons(){
         val messages = Region()
         messages.styleClass.add("messages")
-        messagesButton.setGraphic(messages)
+        messagesButton.graphic = messages
 
         val calendar = Region()
         calendar.styleClass.add("calendar")
-        calendarButton.setGraphic(calendar)
+        calendarButton.graphic = calendar
 
         val avatar = Region()
         avatar.styleClass.add("avatar")
-        avatarButton.setGraphic(avatar)
+        avatarButton.graphic = avatar
 
         val gear = Region()
         gear.styleClass.add("gear")
-        gearButton.setGraphic(gear)
+        gearButton.graphic = gear
+    }
+
+    init {
+        val loader = FXMLLoader(mainScreenController::class.java.getResource("mainScreen.fxml"))
+        loader.setController(this)
+        loader.setRoot(this)
+        loader.load<Any>()
     }
 
 }

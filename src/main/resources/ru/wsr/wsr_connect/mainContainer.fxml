@@ -2,9 +2,4 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.wsr.wsr_connect.MainContainer">
-   <center>
-        <fx:include source="mainScreen.fxml" />
-   </center>
-</BorderPane>
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
