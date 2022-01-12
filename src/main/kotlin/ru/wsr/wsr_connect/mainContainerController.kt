@@ -5,6 +5,8 @@ import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.layout.BorderPane
+import ru.wsr.wsr_connect.signComponents.loginScreenController
+import ru.wsr.wsr_connect.signComponents.signupScreenController
 
 class MainContainer : BorderPane() {
 
@@ -16,7 +18,8 @@ class MainContainer : BorderPane() {
 
     @FXML
     fun initialize() {
-        this.center = mainScreenController()
+        this.center = loginScreenController()
+
     }
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("mainContainer.fxml"))

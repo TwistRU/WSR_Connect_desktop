@@ -1,12 +1,11 @@
 package ru.wsr.wsr_connect
 
 import javafx.application.Application
-import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.stage.Screen
 import javafx.stage.Stage
-import java.awt.GraphicsEnvironment
-import java.awt.SystemColor.control
+import ru.wsr.wsr_connect.signComponents.loginScreenController
+import ru.wsr.wsr_connect.signComponents.signupScreenController
 
 
 open class WSRConnectApplication : Application() {
@@ -16,6 +15,8 @@ open class WSRConnectApplication : Application() {
         val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
         val fxmlLoader = MainContainer()
         val scene = Scene(fxmlLoader, screenWidth * 0.75, screenHeight * 0.75)
+
+        (fxmlLoader.center as loginScreenController).changeSize()
 
 
         stage.title = "WSR Connect"

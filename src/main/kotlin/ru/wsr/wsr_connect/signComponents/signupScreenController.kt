@@ -1,19 +1,17 @@
 package ru.wsr.wsr_connect.signComponents
 
-import javafx.fxml.FXML
-import javafx.scene.control.*
-import javafx.scene.control.Button
-import javafx.scene.control.TextField
-import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.Pane
-import javafx.scene.layout.VBox
-import javafx.scene.transform.Scale
-import javafx.stage.Screen
 import java.net.URL
-import java.util.*
-import java.awt.*
+import java.util.ResourceBundle
+import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.scene.control.Button
+import javafx.scene.control.PasswordField
+import javafx.scene.control.TextField
+import javafx.scene.image.ImageView
+import javafx.scene.layout.StackPane
+import javafx.scene.layout.VBox
 
-class signupScreenController {
+class signupScreenController : StackPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -22,18 +20,13 @@ class signupScreenController {
     private lateinit var location: URL
 
     @FXML
-    private lateinit var anchorPane: AnchorPane
-    public var anchorPaneH = 1920.0
-    public var anchorPaneW = 1080.0
+    private lateinit var background: ImageView
 
     @FXML
     private lateinit var boxBox: VBox
 
     @FXML
     private lateinit var emailField: TextField
-
-    @FXML
-    private lateinit var pane: Pane
 
     @FXML
     private lateinit var passwordField: PasswordField
@@ -50,22 +43,31 @@ class signupScreenController {
     @FXML
     fun initialize() {
 
+//        background.fitWidthProperty().bind()
+        this.boxBox.scaleX = 0.7
+        this.boxBox.scaleY = 0.7
 
-        val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
-        val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
+    }
+    init {
+        val fxmlLoader = FXMLLoader(javaClass.getResource("signUpScreen.fxml"))
+        fxmlLoader.setRoot(this)
+        fxmlLoader.setController(this)
+        fxmlLoader.load<Any>()
+    }
 
-
-        val scale = Scale()
-        scale.setPivotX(0.0)
-        scale.setPivotY(0.0)
-        scale.x = screenWidth * 0.75 / 1920.0
-        scale.y = screenHeight * 0.75 / 1080.0
-        anchorPane.transforms.add(scale)
-
-
-
-
-
+    fun changeSize(){
+        this.scene.widthProperty().addListener { _, old, new ->
+            if (this.scene.height / new as Double <= 0.5625){
+                background.fitHeight = new / 0.5625
+                background.fitWidth = new
+            }
+        }
+        this.scene.heightProperty().addListener { _, old, new ->
+            if (new as Double / this.scene.width > 0.5625) {
+                background.fitWidth = new / 0.5625
+                background.fitHeight = new
+            }
+        }
     }
 
 }

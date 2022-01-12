@@ -2,4 +2,4 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"/>

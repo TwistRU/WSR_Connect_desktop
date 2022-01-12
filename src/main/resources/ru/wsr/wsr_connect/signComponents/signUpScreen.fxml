@@ -6,109 +6,83 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="Infinity" maxWidth="Infinity" minHeight="0.0" minWidth="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.wsr.wsr_connect.signComponents.signupScreenController">
-    <children>
-        <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0">
-            <children>
-                <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../assets/images/upper_light_wave.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../assets/images/upper_dark_wave.png" />
-                    </image>
-                </ImageView>
-                <ImageView blendMode="SRC_ATOP" fitHeight="1080.0" fitWidth="1920.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../assets/images/lower_dark_wave.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="210.0" fitWidth="210.0" layoutX="165.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../assets/images/logo_hand_with_phone.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
-        <VBox fx:id="boxBox" layoutX="210.0" layoutY="430.0" prefHeight="600.0" prefWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-            <children>
+<fx:root fx:id="stackPane" style="-fx-background-color: white;" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fx:id="background" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+        <Image url="@../../../../assets/images/background_wave_logo.png" />
+    </ImageView>
+    <BorderPane>
+        <center>
+            <VBox fx:id="boxBox" fillWidth="false" maxHeight="500.0" maxWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css" BorderPane.alignment="BOTTOM_LEFT">
                 <VBox fx:id="textFieldsBox" styleClass="textFieldsBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-                    <children>
-                  <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="NickName">
-                     <font>
-                        <Font name="Calibri" size="42.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="emailField2" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                        <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
-                            <font>
-                                <Font name="Calibri" size="42.0" />
-                            </font>
-                        </Text>
-                        <TextField fx:id="emailField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                        </TextField>
-                        <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-                            <font>
-                                <Font name="Calibri" size="42.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="15.0" />
-                            </VBox.margin>
-                        </Text>
-                        <PasswordField fx:id="passwordField" prefWidth="600.0" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin>
-                        </PasswordField>
-                  <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password">
-                     <font>
-                        <Font name="Calibri" size="42.0" />
-                     </font>
-                  </Text>
-                  <PasswordField fx:id="passwordField1" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </PasswordField>
-                    </children>
+                    <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                        <font>
+                            <Font name="Calibri" size="45.0" />
+                        </font>
+                    </Text>
+                    <TextField fx:id="emailField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </TextField>
+               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                  <font>
+                     <Font name="Calibri" size="45.0" />
+                  </font>
+               </Text>
+               <TextField fx:id="emailField1" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </TextField>
+                    <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                        <font>
+                            <Font name="Calibri" size="45.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets top="10.0" />
+                        </VBox.margin>
+                    </Text>
+                    <PasswordField fx:id="passwordField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </PasswordField>
+               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+                  <font>
+                     <Font name="Calibri" size="45.0" />
+                  </font>
+               </Text>
+               <PasswordField fx:id="passwordField1" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </PasswordField>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-                    <Button fx:id="signUpButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign Up" textFill="#2196f3">
+                    <Button fx:id="signInButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign up" textFill="#2196f3">
                         <font>
                             <Font name="Calibri" size="45.0" />
                         </font>
                     </Button>
-                    <Button fx:id="signInButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Cancel" textFill="#2196f3">
+                    <Button fx:id="signUpButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Back" textFill="#2196f3">
                         <font>
                             <Font name="Calibri" size="45.0" />
                         </font>
                     </Button>
                 </VBox>
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+            </VBox>
+        </center>
+        <padding>
+            <Insets bottom="50.0" left="150.0" />
+        </padding>
+    </BorderPane>
+</fx:root>

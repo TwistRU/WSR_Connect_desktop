@@ -1,26 +1,20 @@
 package ru.wsr.wsr_connect.signComponents
 
-import javafx.beans.binding.Bindings
-import javafx.event.ActionEvent
+import java.net.URL
+import java.util.ResourceBundle
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
-import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.Pane
+import javafx.scene.layout.BorderPane
+import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
-import javafx.scene.text.Text
-import javafx.scene.transform.Scale
-import javafx.stage.Screen
-import java.net.URL
-import java.util.*
+import javafx.stage.Window
+import ru.wsr.wsr_connect.mainScreenController
 
-class loginScreenController {
-
-    fun loginScreenController(){
-        print(anchorPane.scene.window.width)
-    }
+class loginScreenController : StackPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -29,16 +23,13 @@ class loginScreenController {
     private lateinit var location: URL
 
     @FXML
-    private lateinit var anchorPane: AnchorPane
+    private lateinit var background: ImageView
 
     @FXML
     private lateinit var boxBox: VBox
 
     @FXML
     private lateinit var emailField: TextField
-
-    @FXML
-    private lateinit var pane: Pane
 
     @FXML
     private lateinit var passwordField: PasswordField
@@ -53,42 +44,33 @@ class loginScreenController {
     private lateinit var textFieldsBox: VBox
 
     @FXML
-    private lateinit var upperDarkWave: ImageView
-
-    @FXML
     fun initialize() {
 
-
-
-        val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
-        val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
-
-
-
-        val scale = Scale()
-        scale.setPivotX(0.0)
-        scale.setPivotY(0.0)
-        scale.x = screenWidth * 0.75 / 1920.0
-        scale.y = screenHeight * 0.75 / 1080.0
-        anchorPane.transforms.add(scale)
-        anchorPane.minWidthProperty().bind(anchorPane.heightProperty())
-        anchorPane.maxWidthProperty().bind(anchorPane.heightProperty())
-
-//        println(screenWidth)
-//        println(screenHeight)
-//
-
-//        anchorPane.widthProperty().addListener {  }
+//        background.fitWidthProperty().bind()
+        this.boxBox.scaleX = 0.7
+        this.boxBox.scaleY = 0.7   // Рома, не бей
 
     }
+    init {
+        val fxmlLoader = FXMLLoader(javaClass.getResource("loginScreen.fxml"))
+        fxmlLoader.setRoot(this)
+        fxmlLoader.setController(this)
+        fxmlLoader.load<Any>()
+    }
 
-//    @FXML
-//    fun adjustWidth(actionEvent: ActionEvent) {
-////        val w = anchorPane.scene.window.width
-////        println(w)
-//        println(anchorPane.width)
-//    }
-
-
+    fun changeSize(){
+        this.scene.widthProperty().addListener { _, old, new ->
+            if (this.scene.height / new as Double <= 0.5625){
+                background.fitHeight = new / 0.5625
+                background.fitWidth = new
+            }
+        }
+        this.scene.heightProperty().addListener { _, old, new ->
+            if (new as Double / this.scene.width > 0.5625) {
+                background.fitWidth = new / 0.5625
+                background.fitHeight = new
+            }
+        }
+    }
 
 }
