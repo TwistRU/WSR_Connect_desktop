@@ -5,8 +5,7 @@ import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.layout.BorderPane
-import ru.wsr.wsr_connect.signComponents.loginScreenController
-import ru.wsr.wsr_connect.signComponents.signupScreenController
+import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 
 class MainContainer : BorderPane() {
 
@@ -18,7 +17,7 @@ class MainContainer : BorderPane() {
 
     @FXML
     fun initialize() {
-        this.center = loginScreenController()
+        this.center = MainScreenController()
 
     }
     init {

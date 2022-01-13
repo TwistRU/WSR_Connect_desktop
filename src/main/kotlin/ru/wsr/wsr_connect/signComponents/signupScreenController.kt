@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 
-class signupScreenController : StackPane() {
+class SignupScreenController : StackPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle

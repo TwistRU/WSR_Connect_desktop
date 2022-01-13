@@ -9,10 +9,11 @@ import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.transform.Scale
 import javafx.stage.Screen
+import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import java.net.URL
 import java.util.*
 
-class mainScreenController : BorderPane() {
+class MainScreenController : BorderPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -30,6 +31,9 @@ class mainScreenController : BorderPane() {
     private lateinit var gearButton: Button
 
     @FXML
+    private lateinit var componentsRoot: BorderPane
+
+    @FXML
     private lateinit var globalBox: BorderPane
 
     @FXML
@@ -42,6 +46,7 @@ class mainScreenController : BorderPane() {
     fun initialize() {
 
         makeButtons()
+        this.componentsRoot.left = ChatScreenController()
 
     }
 
@@ -64,7 +69,7 @@ class mainScreenController : BorderPane() {
     }
 
     init {
-        val loader = FXMLLoader(mainScreenController::class.java.getResource("mainScreen.fxml"))
+        val loader = FXMLLoader(javaClass.getResource("mainScreen.fxml"))
         loader.setController(this)
         loader.setRoot(this)
         loader.load<Any>()

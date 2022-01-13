@@ -12,9 +12,9 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Window
-import ru.wsr.wsr_connect.mainScreenController
+import ru.wsr.wsr_connect.MainScreenController
 
-class loginScreenController : StackPane() {
+class LoginScreenController : StackPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle

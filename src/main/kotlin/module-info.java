@@ -14,7 +14,9 @@ module ru.wsr.wsr_connect {
 
     opens ru.wsr.wsr_connect to javafx.fxml;
     opens ru.wsr.wsr_connect.signComponents to javafx.fxml;
+    opens ru.wsr.wsr_connect.chatComponents to javafx.fxml;
 
     exports ru.wsr.wsr_connect;
     exports ru.wsr.wsr_connect.signComponents;
+    exports ru.wsr.wsr_connect.chatComponents;
 }
