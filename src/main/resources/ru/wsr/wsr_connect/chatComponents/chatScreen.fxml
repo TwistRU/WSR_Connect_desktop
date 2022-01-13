@@ -44,7 +44,7 @@
             <Font size="36.0" />
          </font>
          <BorderPane.margin>
-            <Insets bottom="10.0" left="50.0" top="10.0" />
+            <Insets bottom="12.0" left="50.0" top="10.0" />
          </BorderPane.margin>
       </Text>
    </top>

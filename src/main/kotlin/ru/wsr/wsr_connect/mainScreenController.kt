@@ -3,15 +3,15 @@ package ru.wsr.wsr_connect
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
+import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
-import javafx.scene.layout.HBox
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
-import javafx.scene.transform.Scale
-import javafx.stage.Screen
+import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import java.net.URL
 import java.util.*
+
 
 class MainScreenController : BorderPane() {
 
@@ -20,6 +20,9 @@ class MainScreenController : BorderPane() {
 
     @FXML
     private lateinit var location: URL
+
+    @FXML
+    private lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var avatarButton: Button
@@ -46,9 +49,18 @@ class MainScreenController : BorderPane() {
     fun initialize() {
 
         makeButtons()
+        makeAvatar()
         this.componentsRoot.left = ChatScreenController()
 
     }
+
+    init {
+        val loader = FXMLLoader(javaClass.getResource("mainScreen.fxml"))
+        loader.setController(this)
+        loader.setRoot(this)
+        loader.load<Any>()
+    }
+
 
     private fun makeButtons(){
         val messages = Region()
@@ -68,11 +80,9 @@ class MainScreenController : BorderPane() {
         gearButton.graphic = gear
     }
 
-    init {
-        val loader = FXMLLoader(javaClass.getResource("mainScreen.fxml"))
-        loader.setController(this)
-        loader.setRoot(this)
-        loader.load<Any>()
+    private fun makeAvatar(){
+        val clip = Circle(35.0, 35.0, 30.0)
+        avatarImage.clip = clip
     }
 
 }
