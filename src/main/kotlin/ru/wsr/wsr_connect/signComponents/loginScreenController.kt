@@ -48,7 +48,9 @@ class loginScreenController : StackPane() {
 
 //        background.fitWidthProperty().bind()
         this.boxBox.scaleX = 0.7
-        this.boxBox.scaleY = 0.7   // Рома, не бей
+        this.boxBox.scaleY = 0.7
+
+        //TODO Исправить: функциональные поля выходт за нижнюю границу
 
     }
     init {
