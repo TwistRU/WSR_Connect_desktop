@@ -1,0 +1,34 @@
+.titleText {
+    -fx-font-size: 22;
+    -fx-fill: black;
+}
+
+.titleBox {
+    -fx-pref-width: 200;
+    -fx-spacing: 10;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #1565C0;
+    -fx-border-width: 7;
+}
+
+.tablePreview {
+    -fx-pref-width: 200;
+    -fx-pref-height: 200;
+    -fx-spacing: 5;
+    -fx-background-color: #1565C0;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+}
+
+.gridRow {
+    -fx-pref-height: 200;
+    -fx-pref-width: 680;
+    -fx-spacing: 20;
+}
+
+.gridColumn {
+    -fx-pref-height: 200;
+    -fx-pref-width: 200;
+    -fx-spacing: 20;
+}

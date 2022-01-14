@@ -37,7 +37,7 @@
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="340.0">
                      <children>
                         <PasswordField fx:id="profileChangePassField" prefHeight="40.0" prefWidth="300.0" styleClass="fieldInfo" text="lupazalupa" />
-                        <Button fx:id="profileSavePassButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="profileSaveInfoButton" text="🖉🖉🖉" textAlignment="CENTER" />
+                        <Button fx:id="profileSavePassButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="profileSaveInfoButton" text="🖉" textAlignment="CENTER" />
                      </children>
                   </HBox>
                </children>

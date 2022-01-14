@@ -8,6 +8,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.wsr.wsr_connect.tasksComponents.TaskScreen">
+            fx:controller="ru.wsr.wsr_connect.tasksComponents.TasksScreen">
 
 </AnchorPane>

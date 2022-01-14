@@ -20,4 +20,5 @@ module ru.wsr.wsr_connect {
     exports ru.wsr.wsr_connect.signComponents;
     exports ru.wsr.wsr_connect.chatComponents;
     exports ru.wsr.wsr_connect.profileComponents;
+    exports ru.wsr.wsr_connect.tasksComponents;
 }
