@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="300.0" style="-fx-background-color: #BBDEFB33;" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fx:id="avatarImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
+        <Image url="@../../../../assets/images/avatar_image_1.jpg" />
+    </ImageView>
+    <VBox HBox.hgrow="ALWAYS">
+        <HBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+        </HBox.margin>
+        <Label text="Username">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label text="Last message">
+           <font>
+               <Font size="14.0" />
+           </font>
+        </Label>
+    </VBox>
+</fx:root>

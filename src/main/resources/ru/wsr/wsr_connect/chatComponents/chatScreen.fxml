@@ -15,22 +15,22 @@
       <VBox fx:id="chatBox" minWidth="400.0" styleClass="chatBox" stylesheets="@../../../../styles/chatScreenStyles.css" BorderPane.alignment="CENTER">
          <HBox>
             <VBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </VBox.margin>
-            <children>
-               <TextField styleClass="textField" stylesheets="@../../../../styles/chatScreenStyles.css" HBox.hgrow="ALWAYS">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </TextField>
-               <Button fx:id="searchButton" mnemonicParsing="false" styleClass="searchButton" stylesheets="@../../../../styles/chatScreenStyles.css" />
-            </children>
+            <TextField styleClass="textField" stylesheets="@../../../../styles/chatScreenStyles.css"
+                       HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0"/>
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="searchButton" mnemonicParsing="false" styleClass="searchButton"
+                    stylesheets="@../../../../styles/chatScreenStyles.css"/>
          </HBox>
          <ScrollPane minWidth="400.0" styleClass="scrollPane" stylesheets="@../../../../styles/chatScreenStyles.css">
             <VBox.margin>
                <Insets />
             </VBox.margin>
-            <VBox minWidth="370.0" spacing="10.0">
+            <VBox fx:id="resultList" minWidth="370.0" spacing="10.0">
                <padding>
                   <Insets left="20.0" />
                </padding>

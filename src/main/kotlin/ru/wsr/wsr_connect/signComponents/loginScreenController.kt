@@ -29,16 +29,16 @@ class LoginScreenController : StackPane() {
     private lateinit var boxBox: VBox
 
     @FXML
-    private lateinit var emailField: TextField
+    lateinit var emailField: TextField
 
     @FXML
-    private lateinit var passwordField: PasswordField
+    lateinit var passwordField: PasswordField
 
     @FXML
-    private lateinit var signInButton: Button
+    lateinit var signInButton: Button
 
     @FXML
-    private lateinit var signUpButton: Button
+    lateinit var signUpButton: Button
 
     @FXML
     private lateinit var textFieldsBox: VBox
@@ -50,7 +50,13 @@ class LoginScreenController : StackPane() {
         this.boxBox.scaleX = 0.7
         this.boxBox.scaleY = 0.7
 
+
+        background.fitHeight = 720.0
+        background.fitWidth = 1280.0
+
         //TODO Исправить: функциональные поля выходт за нижнюю границу
+
+
 
     }
     init {

@@ -68,12 +68,12 @@
                </PasswordField>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-                    <Button fx:id="signInButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign up" textFill="#2196f3">
+                    <Button fx:id="signUpButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign up" textFill="#2196f3">
                         <font>
                             <Font name="Calibri" size="45.0" />
                         </font>
                     </Button>
-                    <Button fx:id="signUpButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Back" textFill="#2196f3">
+                    <Button fx:id="backButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Back" textFill="#2196f3">
                         <font>
                             <Font name="Calibri" size="45.0" />
                         </font>

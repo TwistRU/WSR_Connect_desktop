@@ -29,11 +29,21 @@ class ChatScreenController : BorderPane() {
     private lateinit var nameField: Text
 
     @FXML
+    lateinit var resultList: VBox
+
+    @FXML
     private lateinit var searchButton: Button
 
     @FXML
     fun initialize() {
         makeSearchButton()
+        resultList.children.addAll(
+            ChatSearchUser(),
+            ChatSearchUser(),
+//            ChatSearchCard(),
+//            ChatSearchCard(),
+//            ChatSearchCard()
+        )
     }
 
     init {

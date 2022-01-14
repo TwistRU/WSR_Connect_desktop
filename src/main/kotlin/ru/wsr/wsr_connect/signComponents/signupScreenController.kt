@@ -26,16 +26,16 @@ class SignupScreenController : StackPane() {
     private lateinit var boxBox: VBox
 
     @FXML
-    private lateinit var emailField: TextField
+    lateinit var emailField: TextField
 
     @FXML
-    private lateinit var passwordField: PasswordField
+    lateinit var passwordField: PasswordField
 
     @FXML
-    private lateinit var signInButton: Button
+    lateinit var signUpButton: Button
 
     @FXML
-    private lateinit var signUpButton: Button
+    lateinit var backButton: Button
 
     @FXML
     private lateinit var textFieldsBox: VBox
@@ -47,6 +47,10 @@ class SignupScreenController : StackPane() {
         this.boxBox.scaleX = 0.7
         this.boxBox.scaleY = 0.7
 
+
+        background.fitHeight = 720.0
+        background.fitWidth = 1280.0
+
     }
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("signUpScreen.fxml"))
@@ -56,6 +60,8 @@ class SignupScreenController : StackPane() {
     }
 
     fun changeSize(){
+        background.fitHeight = 720.0
+        background.fitWidth = 1280.0
         this.scene.widthProperty().addListener { _, old, new ->
             if (this.scene.height / new as Double <= 0.5625){
                 background.fitHeight = new / 0.5625

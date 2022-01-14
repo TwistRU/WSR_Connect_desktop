@@ -1,14 +1,20 @@
 package ru.wsr.wsr_connect
 
+import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
+import ru.wsr.wsr_connect.chatComponents.ChatSearchUser
+import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
+import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
+import java.awt.event.ActionEvent
 import java.net.URL
 import java.util.*
 
@@ -22,7 +28,7 @@ class MainScreenController : BorderPane() {
     private lateinit var location: URL
 
     @FXML
-    private lateinit var avatarImage: ImageView
+    lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var avatarButton: Button
@@ -45,12 +51,28 @@ class MainScreenController : BorderPane() {
     @FXML
     private lateinit var sideBar: VBox
 
+
+//    var cards = arrayOf(
+//        ChatSearchUser(),
+//        ChatSearchUser(),
+//        ChatSearchUser(),
+//        ChatSearchUser()
+//    )
+
+
     @FXML
     fun initialize() {
 
         makeButtons()
         makeAvatar()
-        this.componentsRoot.left = ChatScreenController()
+
+        this.componentsRoot.left = null
+
+        this.messagesButton.setOnAction { e -> messages() }
+        this.calendarButton.setOnAction { e -> taskmanager() }
+        this.avatarButton.setOnAction { e -> profile() }
+        this.gearButton.setOnAction { e -> settings() }
+
 
     }
 
@@ -62,10 +84,12 @@ class MainScreenController : BorderPane() {
     }
 
 
+
     private fun makeButtons(){
         val messages = Region()
         messages.styleClass.add("messages")
         messagesButton.graphic = messages
+
 
         val calendar = Region()
         calendar.styleClass.add("calendar")
@@ -84,5 +108,28 @@ class MainScreenController : BorderPane() {
         val clip = Circle(35.0, 35.0, 30.0)
         avatarImage.clip = clip
     }
+
+
+
+    private fun messages() {
+        val chat_screen = ChatScreenController()
+        this.componentsRoot.left = chat_screen
+    }
+
+    private fun taskmanager(){
+        val taskmanager_screen = TablesScreenController()
+        this.componentsRoot.left = taskmanager_screen
+    }
+
+    private fun profile(){
+        val profile_screen = ProfileScreenController()
+        this.componentsRoot.left = profile_screen
+    }
+
+    private fun settings(){
+        this.componentsRoot.left = null
+    }
+
+
 
 }

@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #BBDEFB;" stylesheets="@../../../../styles/tablesScreenStyles.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #BBDEFB;" stylesheets="@../../../../styles/tablesScreenStyles.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="companyImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Pictures/Saved%20Pictures/foJhStmMIdU.jpg" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="companyName" strokeType="OUTSIDE" strokeWidth="0.0" text="Company Name">
-                     <font>
-                        <Font size="30.0" />
-                     </font></Text>
-               </children>
                <padding>
-                  <Insets bottom="50.0" top="100.0" />
+                  <Insets bottom="50.0" top="100.0"/>
                </padding>
+               <ImageView fx:id="companyImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true">
+                  <image>
+                     <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                  </image>
+               </ImageView>
+               <Text fx:id="companyName" strokeType="OUTSIDE" strokeWidth="0.0" text="Company Name">
+                  <font>
+                     <Font size="30.0"/>
+                  </font>
+               </Text>
             </VBox>
          </center>
       </BorderPane>
@@ -42,157 +42,158 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" styleClass="gridRow" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" styleClass="gridColumn">
-               <children>
-                  <VBox fx:id="tablePreview" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text fx:id="tableTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="tableStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="🔒" />
-                           </children>
-                        </HBox>
-                        <ImageView fx:id="tableImage" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="250.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="360.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="30.0" maxHeight="-Infinity" minHeight="-Infinity" styleClass="gridColumn">
-               <children>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="250.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="🔒" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="140.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
+      <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" styleClass="gridRow"
+            BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets />
+            <Insets/>
          </BorderPane.margin>
          <padding>
-            <Insets bottom="20.0" top="20.0" />
+            <Insets bottom="20.0" top="20.0"/>
          </padding>
+         <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" styleClass="gridColumn">
+            <VBox fx:id="tablePreview" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                  styleClass="tablePreview">
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                     <children>
+                        <Text fx:id="tableTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"
+                              text="Table Title">
+                           <font>
+                              <Font size="20.0"/>
+                           </font>
+                        </Text>
+                        <Text fx:id="tableStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"
+                              text="🔒"/>
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="tableImage" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true">
+                     <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0"/>
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="250.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity"
+                  styleClass="tablePreview">
+               <padding>
+                  <Insets bottom="10.0"/>
+               </padding>
+               <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                     </Text>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"/>
+                  </children>
+               </HBox>
+               <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true">
+                  <image>
+                     <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                  </image>
+               </ImageView>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="360.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity"
+                  styleClass="tablePreview">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
+                           <font>
+                              <Font size="20.0"/>
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"/>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0"/>
+               </padding>
+            </VBox>
+         </HBox>
+         <HBox alignment="CENTER" layoutX="10.0" layoutY="30.0" maxHeight="-Infinity" minHeight="-Infinity"
+               styleClass="gridColumn">
+            <children>
+               <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" styleClass="tablePreview">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
+                              <font>
+                                 <Font size="20.0"/>
+                              </font>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"/>
+                        </children>
+                     </HBox>
+                     <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true">
+                        <image>
+                           <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                        </image>
+                     </ImageView>
+                  </children>
+                  <padding>
+                     <Insets bottom="10.0"/>
+                  </padding>
+                  <HBox.margin>
+                     <Insets/>
+                  </HBox.margin>
+               </VBox>
+               <VBox alignment="CENTER" layoutX="250.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity"
+                     styleClass="tablePreview">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title">
+                              <font>
+                                 <Font size="20.0"/>
+                              </font>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="🔒"/>
+                        </children>
+                     </HBox>
+                     <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true">
+                        <image>
+                           <Image url="@../../../../assets/images/avatar_image_1.jpg"/>
+                        </image>
+                     </ImageView>
+                  </children>
+                  <padding>
+                     <Insets bottom="10.0"/>
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER" layoutX="140.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity"
+                     styleClass="tablePreview">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" styleClass="titleBox">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText">
+                              <font>
+                                 <Font size="20.0"/>
+                              </font>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText"/>
+                        </children>
+                     </HBox>
+                     <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                  </children>
+                  <padding>
+                     <Insets bottom="10.0"/>
+                  </padding>
+               </VBox>
+            </children>
+         </HBox>
       </VBox>
    </center>
 </fx:root>

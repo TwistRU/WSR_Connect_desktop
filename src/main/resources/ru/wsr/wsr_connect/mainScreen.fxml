@@ -11,32 +11,27 @@
    <left>
       <VBox style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
          <ImageView fx:id="avatarImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
-            <Image url="@../../../assets/images/avatar_image_1.jpg"/>
+            <Image url="@../../../assets/images/avatar_image_1.jpg" />
          </ImageView>
-         <VBox fx:id="sideBar" alignment="CENTER_LEFT" spacing="40.0" style="-fx-background-color: #1565C0;"
-               VBox.vgrow="ALWAYS">
-            <Button fx:id="messagesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    styleClass="sideButton">
+         <VBox fx:id="sideBar" alignment="CENTER_LEFT" spacing="40.0" style="-fx-background-color: #1565C0;" VBox.vgrow="ALWAYS">
+            <Button fx:id="messagesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="sideButton">
                <VBox.margin>
-                  <Insets left="5.0" right="5.0"/>
+                  <Insets left="5.0" right="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="calendarButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
+            <Button fx:id="calendarButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
                <VBox.margin>
-                  <Insets left="5.0" right="5.0"/>
+                  <Insets left="5.0" right="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="avatarButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
+            <Button fx:id="avatarButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
                <VBox.margin>
-                  <Insets left="5.0" right="5.0"/>
+                  <Insets left="5.0" right="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="gearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
+            <Button fx:id="gearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="sideButton" stylesheets="@../../../styles/mainScreenStyles.css">
                <VBox.margin>
-                  <Insets left="5.0" right="5.0"/>
+                  <Insets left="5.0" right="5.0" />
                </VBox.margin>
             </Button>
          </VBox>
