@@ -44,9 +44,6 @@ class ChatScreenController : BorderPane() {
 //            ChatSearchCard(),
 //            ChatSearchCard()
         )
-
-
-
     }
 
     init {
@@ -61,7 +58,5 @@ class ChatScreenController : BorderPane() {
         search.styleClass.add("search")
         searchButton.graphic = search
     }
-
-
 
 }

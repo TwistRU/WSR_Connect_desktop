@@ -1,17 +1,20 @@
 package ru.wsr.wsr_connect
 
+import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
-import ru.wsr.wsr_connect.chatComponents.ChatMessagesWindow
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
+import ru.wsr.wsr_connect.chatComponents.ChatSearchUser
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
 import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
+import java.awt.event.ActionEvent
 import java.net.URL
 import java.util.*
 
@@ -109,10 +112,8 @@ class MainScreenController : BorderPane() {
 
 
     private fun messages() {
-        val chat_list = ChatScreenController()
-        val chat_window = ChatMessagesWindow()
-        this.componentsRoot.left = chat_list
-        this.componentsRoot.center = chat_window
+        val chat_screen = ChatScreenController()
+        this.componentsRoot.left = chat_screen
     }
 
     private fun taskmanager(){
@@ -128,4 +129,7 @@ class MainScreenController : BorderPane() {
     private fun settings(){
         this.componentsRoot.left = null
     }
+
+
+
 }
