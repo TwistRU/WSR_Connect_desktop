@@ -12,21 +12,19 @@
 
 <fx:root fx:id="root" style="-fx-background-color: #BBDEFB;" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox fx:id="chatBox" minWidth="400.0" styleClass="chatBox" stylesheets="@../../../../styles/chatScreenStyles.css" BorderPane.alignment="CENTER">
+      <VBox fx:id="chatBox" styleClass="chatBox" stylesheets="@../../../../styles/chatScreenStyles.css" BorderPane.alignment="CENTER">
          <HBox>
             <VBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </VBox.margin>
-            <TextField styleClass="textField" stylesheets="@../../../../styles/chatScreenStyles.css"
-                       HBox.hgrow="ALWAYS">
+            <TextField styleClass="userSearchTextField" stylesheets="@../../../../styles/chatScreenStyles.css" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets right="10.0"/>
+                  <Insets right="10.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="searchButton" mnemonicParsing="false" styleClass="searchButton"
-                    stylesheets="@../../../../styles/chatScreenStyles.css"/>
+            <Button fx:id="searchButton" mnemonicParsing="false" styleClass="searchButton" stylesheets="@../../../../styles/chatScreenStyles.css" />
          </HBox>
-         <ScrollPane minWidth="400.0" styleClass="scrollPane" stylesheets="@../../../../styles/chatScreenStyles.css">
+         <ScrollPane hbarPolicy="NEVER" minWidth="350.0" styleClass="scrollPane" stylesheets="@../../../../styles/chatScreenStyles.css" vbarPolicy="NEVER">
             <VBox.margin>
                <Insets />
             </VBox.margin>

@@ -11,6 +11,8 @@ module ru.wsr.wsr_connect {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.desktop;
+//    requires ktor.client.core.jvm;
+//    requires ktor.client.cio.jvm;
 
     opens ru.wsr.wsr_connect to javafx.fxml;
     opens ru.wsr.wsr_connect.signComponents to javafx.fxml;

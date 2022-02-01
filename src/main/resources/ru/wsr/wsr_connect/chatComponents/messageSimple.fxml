@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+<fx:root style="-fx-background-color: transparent;" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="avatarImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <TextFlow fx:id="senderName" />
+            <HBox style="-fx-background-color: #1565C0;">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <children>
+                  <TextFlow fx:id="forwardedMessageText" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextFlow>
+               </children>
+            </HBox>
+            <TextFlow fx:id="messageText" />
+         </children>
+      </VBox>
+   </children>
+</fx:root>
