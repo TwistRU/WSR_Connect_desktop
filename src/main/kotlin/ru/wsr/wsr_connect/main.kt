@@ -11,13 +11,14 @@ import ru.wsr.wsr_connect.signComponents.SignupScreenController
 open class WSRConnectApplication : Application() {
 
     override fun start(stage: Stage) {
-        val screenWidth = Screen.getPrimary().getBounds().getWidth() as Double
-        val screenHeight = Screen.getPrimary().getBounds().getHeight() as Double
+        val screenWidth = Screen.getPrimary().bounds.width
+        val screenHeight = Screen.getPrimary().bounds.height
         val fxmlLoader = MainContainer()
         val scene = Scene(fxmlLoader, screenWidth * 0.75, screenHeight * 0.75)
 
 
 //        (fxmlLoader.center as LoginScreenController).changeSize()
+
 
 
         stage.title = "WSR Connect"

@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 
 
-class ChatScreenController : BorderPane() {
+class ChatScreenController() : BorderPane() {
 
     @FXML
     private lateinit var resources: ResourceBundle
