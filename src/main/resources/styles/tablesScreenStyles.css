@@ -32,3 +32,12 @@
     -fx-pref-width: 200;
     -fx-spacing: 20;
 }
+
+.createCompanyButton {
+    -fx-background-color: transparant;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-pref-width: 40;
+    -fx-pref-height: 40;
+    -fx-cursor: HAND;
+}

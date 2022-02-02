@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: BBDEFB;" stylesheets="@../../../../styles/tablesScreenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Вы еще не состоите в компании. Создайте новую или вступите в существующую по приглашению, чтобы получить доступ к доскам" />
+         </children></Pane>
+   </top>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" spacing="50.0" style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="СОЗДАНИЕ КОМПАНИИ" />
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../Pictures/Screenshots/deku.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="createCompanyButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="📷" />
+                     </children>
+                  </HBox>
+                  <TextField maxWidth="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" text="Название компании" />
+                  <Button mnemonicParsing="false" text="Создать" />
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ИЛИ" />
+            <VBox alignment="CENTER" prefWidth="300.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ПРИГЛАШЕНИЯ" />
+                  <ScrollPane prefHeight="400.0">
+                     <content>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя Компании" />
+                                       </children>
+                                    </VBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Текст приглашения" />
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Button fx:id="createCompanyButton1" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="+" />
+                                          <Button fx:id="createCompanyButton2" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../../../../../../Pictures/Screenshots/Снимок%20экрана%20(266).png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя Компании" />
+                                       </children>
+                                    </VBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Текст приглашения" />
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Button fx:id="createCompanyButton12" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="+" />
+                                          <Button fx:id="createCompanyButton22" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
