@@ -66,6 +66,7 @@ class LoginScreenController : StackPane() {
         signUpButton.onAction = EventHandler { switch_to_signup(Parent!!) }
 
 
+
     }
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("loginScreen.fxml"))
