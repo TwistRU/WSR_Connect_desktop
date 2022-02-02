@@ -25,17 +25,13 @@ class MainContainer : BorderPane() {
     fun initialize() {
 
         login_screen = LoginScreenController()
+        login_screen!!.Parent = this
         signup_screen = SignupScreenController()
+        signup_screen!!.Parent = this
+
+        this.center = login_screen
 
 
-
-        switch_to_login_screen()
-
-
-
-        login_screen!!.signInButton.setOnAction { e -> authorise()}
-        login_screen!!.signUpButton.setOnAction { e -> switch_to_signup_screen() }
-        signup_screen!!.backButton.setOnAction { e -> switch_to_login_screen() }
 
     }
 
@@ -51,37 +47,11 @@ class MainContainer : BorderPane() {
 
     fun create_screens(){
         main_screen = MainScreenController()
+        main_screen!!.Parent = this
     }
 
     fun purge_data(){
         main_screen = null
     }
-
-    fun switch_to_login_screen(){
-        this.center = login_screen
-    }
-
-    fun switch_to_signup_screen(){
-        this.center = signup_screen
-    }
-
-    fun authorise(){
-        create_screens()
-        this.center = main_screen
-        main_screen!!.avatarImage.setOnMouseClicked { e ->
-            this.center = login_screen
-            main_screen!!.center = null
-        }
-    }
-
-    fun register(){}
-
-    fun logout(){
-        purge_data()
-        switch_to_login_screen()
-    }
-
-
-
 
 }

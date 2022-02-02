@@ -17,7 +17,7 @@ open class WSRConnectApplication : Application() {
         val scene = Scene(fxmlLoader, screenWidth * 0.75, screenHeight * 0.75)
 
 
-        (fxmlLoader.center as LoginScreenController).changeSize()
+//        (fxmlLoader.center as LoginScreenController).changeSize()
 
 
         stage.title = "WSR Connect"

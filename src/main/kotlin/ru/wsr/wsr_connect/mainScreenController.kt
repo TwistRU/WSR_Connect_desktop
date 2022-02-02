@@ -1,5 +1,6 @@
 package ru.wsr.wsr_connect
 
+import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
@@ -39,10 +40,8 @@ class MainScreenController : BorderPane() {
     @FXML
     private lateinit var messagesButton: Button
 
-    @FXML
-    private lateinit var sideBar: VBox
 
-
+    var Parent: MainContainer? = null
 
     @FXML
     fun initialize() {
@@ -51,6 +50,10 @@ class MainScreenController : BorderPane() {
         makeAvatar()
 
         this.center = null
+
+        this.avatarImage.onMouseClicked = EventHandler { e ->
+            logout(Parent!!)
+        }
 
         this.messagesButton.setOnAction { e -> messenger() }
         this.calendarButton.setOnAction { e -> taskmanager() }
@@ -72,7 +75,6 @@ class MainScreenController : BorderPane() {
         val messages = Region()
         messages.styleClass.add("messages")
         messagesButton.graphic = messages
-
 
         val calendar = Region()
         calendar.styleClass.add("calendar")
@@ -111,6 +113,14 @@ class MainScreenController : BorderPane() {
 
     private fun settings(){
         this.center = null
+    }
+
+
+
+
+    fun logout(scope: MainContainer){
+        scope.purge_data()
+        scope.center = scope.login_screen
     }
 
 }
