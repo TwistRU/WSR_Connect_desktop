@@ -1,15 +1,18 @@
 package ru.wsr.wsr_connect.signComponents
 
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.scene.Parent
 import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
+import ru.wsr.wsr_connect.MainContainer
 
 class SignupScreenController : StackPane() {
 
@@ -40,6 +43,9 @@ class SignupScreenController : StackPane() {
     @FXML
     private lateinit var textFieldsBox: VBox
 
+
+    var Parent: MainContainer? = null
+
     @FXML
     fun initialize() {
 
@@ -50,6 +56,10 @@ class SignupScreenController : StackPane() {
 
         background.fitHeight = 720.0
         background.fitWidth = 1280.0
+
+
+        signUpButton.onAction = EventHandler { authorise(Parent!!) }
+        backButton.onAction = EventHandler { switch_to_login(Parent!!) }
 
     }
     init {
@@ -75,5 +85,17 @@ class SignupScreenController : StackPane() {
             }
         }
     }
+
+
+
+    fun authorise(scope: MainContainer){
+        scope.create_screens()
+        scope.center = scope.main_screen
+    }
+
+    fun switch_to_login(scope: MainContainer){
+        scope.center = scope.login_screen
+    }
+
 
 }
