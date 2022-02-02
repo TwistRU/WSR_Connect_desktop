@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 
-class ChatSearchCard : VBox() {
+class ChatSearchCard : HBox() {
 
     @FXML
     private lateinit var resources: ResourceBundle

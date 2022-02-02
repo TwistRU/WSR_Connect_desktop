@@ -11,7 +11,7 @@
     <ImageView fx:id="avatarImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true">
         <Image url="@../../../../assets/images/avatar_image_1.jpg" />
     </ImageView>
-    <Label text="Username" HBox.hgrow="ALWAYS">
+    <Label fx:id="username" text="Username" HBox.hgrow="ALWAYS">
         <font>
           <Font size="18.0" />
         </font>

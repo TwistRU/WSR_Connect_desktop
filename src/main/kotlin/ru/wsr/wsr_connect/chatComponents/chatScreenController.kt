@@ -20,30 +20,48 @@ class ChatScreenController : BorderPane() {
     private lateinit var location: URL
 
     @FXML
-    private lateinit var root: BorderPane
-
-    @FXML
     private lateinit var chatBox: VBox
 
     @FXML
     private lateinit var nameField: Text
 
     @FXML
-    lateinit var resultList: VBox
+    private lateinit var resultList: VBox
+
+    @FXML
+    private lateinit var resultsBox: BorderPane
+
+    @FXML
+    private lateinit var root: BorderPane
 
     @FXML
     private lateinit var searchButton: Button
 
+
+
+    val messagesWindow = null
+
+    var users = arrayListOf<ChatSearchUser>(
+        ChatSearchUser(),
+        ChatSearchUser()
+    )
+
+    var dialogs = arrayListOf<ChatSearchCard>(
+        ChatSearchCard(),
+        ChatSearchCard()
+    )
+
     @FXML
     fun initialize() {
         makeSearchButton()
-        resultList.children.addAll(
-            ChatSearchUser(),
-            ChatSearchUser(),
-//            ChatSearchCard(),
-//            ChatSearchCard(),
-//            ChatSearchCard()
-        )
+        addMessangerBar()
+        for (user in users){
+            resultList.children.add(user)
+            user.setOnMouseClicked { e -> user.get_chat( this) }
+        }
+        for (dialog in dialogs){
+            resultList.children.add(dialog)
+        }
     }
 
     init {
@@ -53,10 +71,15 @@ class ChatScreenController : BorderPane() {
         fxmlLoader.load<Any>()
     }
 
-    private fun makeSearchButton(){
+    fun makeSearchButton(){
         val search = Region()
         search.styleClass.add("search")
         searchButton.graphic = search
+    }
+
+    fun addMessangerBar(){
+        val messages_window = ChatMessagesWindowCOntroller()
+        this.center = messages_window
     }
 
 }
