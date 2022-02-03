@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root fx:id="tablePreview" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="tablePreview" stylesheets="@../../../../styles/tablesScreenStyles.css" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="titleBox">
+         <children>
+            <Text fx:id="tableTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Table Title" />
+            <Text fx:id="tableAvailable" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="🔒" />
+         </children>
+      </HBox>
+      <ImageView fx:id="tableImage" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</fx:root>
