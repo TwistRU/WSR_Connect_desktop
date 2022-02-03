@@ -47,6 +47,11 @@ class MainScreenController : BorderPane() {
 
     var Parent: MainContainer? = null
 
+
+    var chat_screen: ChatScreenController? = null
+    var taskmanager_screen: TablesScreenController? = null
+    var profile_screen: ProfileScreenController? = null
+
     @FXML
     fun initialize() {
 
@@ -104,17 +109,17 @@ class MainScreenController : BorderPane() {
 
 
     private fun messenger(){
-        val chat_screen = ChatScreenController()
+        chat_screen = ChatScreenController()
         this.center = chat_screen
     }
 
     private fun taskmanager(){
-        val taskmanager_screen = TablesScreenController()
+        taskmanager_screen = TablesScreenController()
         this.center = taskmanager_screen
     }
 
     private fun profile(){
-        val profile_screen = ProfileScreenController()
+        profile_screen = ProfileScreenController()
         this.center = profile_screen
     }
 

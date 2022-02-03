@@ -66,6 +66,7 @@ class ChatSearchCard : HBox() {
             load_messages()
             loaded = true
         }
+        Parent!!.current_chat_id = this.chat_id
         Parent!!.messageScope.children.clear()
 
         Parent.display_messages(this)
