@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -18,68 +19,119 @@
     </ImageView>
     <BorderPane>
         <center>
-            <VBox fx:id="boxBox" fillWidth="false" maxHeight="500.0" maxWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css" BorderPane.alignment="BOTTOM_LEFT">
-                <VBox fx:id="textFieldsBox" styleClass="textFieldsBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-                    <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+         <HBox fx:id="boxBox" alignment="BOTTOM_LEFT" maxHeight="500.0" maxWidth="1050.0" BorderPane.alignment="BOTTOM_LEFT">
+            <children>
+                  <VBox maxHeight="645.0" maxWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css">
+                      <VBox fx:id="textFieldsBox" maxWidth="500.0" styleClass="textFieldsBox" stylesheets="@../../../../styles/loginScreenStyles.css">
+                          <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                              <font>
+                                  <Font name="Calibri" size="45.0" />
+                              </font>
+                          </Text>
+                          <TextField fx:id="usernameField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                              <font>
+                                  <Font size="24.0" />
+                              </font>
+                              <VBox.margin>
+                                  <Insets bottom="10.0" />
+                              </VBox.margin>
+                          </TextField>
+                     <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                         <font>
-                            <Font name="Calibri" size="45.0" />
+                           <Font name="Calibri" size="45.0" />
                         </font>
-                    </Text>
-                    <TextField fx:id="emailField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                     </Text>
+                     <TextField fx:id="emailField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
                         <font>
-                            <Font size="24.0" />
+                           <Font size="24.0" />
+                        </font>
+                     </TextField>
+                          <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                              <font>
+                                  <Font name="Calibri" size="45.0" />
+                              </font>
+                              <VBox.margin>
+                                  <Insets top="10.0" />
+                              </VBox.margin>
+                          </Text>
+                          <PasswordField fx:id="passwordField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                              <font>
+                                  <Font size="24.0" />
+                              </font>
+                          </PasswordField>
+                     <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+                        <font>
+                           <Font name="Calibri" size="45.0" />
+                        </font>
+                     </Text>
+                     <PasswordField fx:id="confirmPasswordField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </PasswordField>
+                     <VBox.margin>
+                        <Insets bottom="-25.0" />
+                     </VBox.margin>
+                      </VBox>
+                  <Text fx:id="errorStatus" fill="#f23d3d" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                      <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/loginScreenStyles.css">
+                          <Button fx:id="signUpButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign up" textFill="#2196f3">
+                              <font>
+                                  <Font name="Calibri" size="45.0" />
+                              </font>
+                          </Button>
+                          <Button fx:id="backButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Back" textFill="#2196f3">
+                              <font>
+                                  <Font name="Calibri" size="45.0" />
+                              </font>
+                          </Button>
+                     <VBox.margin>
+                        <Insets top="-25.0" />
+                     </VBox.margin>
+                      </VBox>
+                  </VBox>
+               <VBox maxHeight="645.0" maxWidth="500.0">
+                  <HBox.margin>
+                     <Insets left="50.0" />
+                  </HBox.margin>
+                  <children>
+                     <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="First name">
+                        <font>
+                           <Font name="Calibri" size="45.0" />
+                        </font>
+                     </Text>
+                     <TextField fx:id="firstNameField" maxHeight="56.0" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                        <font>
+                           <Font size="24.0" />
                         </font>
                         <VBox.margin>
-                            <Insets bottom="10.0" />
+                           <Insets bottom="10.0" />
                         </VBox.margin>
-                    </TextField>
-               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
-                  <font>
-                     <Font name="Calibri" size="45.0" />
-                  </font>
-               </Text>
-               <TextField fx:id="emailField1" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </TextField>
-                    <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     </TextField>
+                     <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
                         <font>
-                            <Font name="Calibri" size="45.0" />
+                           <Font name="Calibri" size="45.0" />
+                        </font>
+                     </Text>
+                     <TextField fx:id="lastNameField" maxHeight="56.0" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
+                        <font>
+                           <Font size="24.0" />
                         </font>
                         <VBox.margin>
-                            <Insets top="10.0" />
+                           <Insets bottom="45.0" />
                         </VBox.margin>
-                    </Text>
-                    <PasswordField fx:id="passwordField" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                        <font>
-                            <Font size="24.0" />
-                        </font>
-                    </PasswordField>
-               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
-                  <font>
-                     <Font name="Calibri" size="45.0" />
-                  </font>
-               </Text>
-               <PasswordField fx:id="passwordField1" styleClass="textFields" stylesheets="@../../../../styles/loginScreenStyles.css">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </PasswordField>
-                </VBox>
-                <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-                    <Button fx:id="signUpButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign up" textFill="#2196f3">
-                        <font>
-                            <Font name="Calibri" size="45.0" />
-                        </font>
-                    </Button>
-                    <Button fx:id="backButton" mnemonicParsing="false" styleClass="buttonVBox" stylesheets="@../../../../styles/loginScreenStyles.css" text="Back" textFill="#2196f3">
-                        <font>
-                            <Font name="Calibri" size="45.0" />
-                        </font>
-                    </Button>
-                </VBox>
-            </VBox>
+                     </TextField>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
         </center>
         <padding>
             <Insets bottom="50.0" left="150.0" />

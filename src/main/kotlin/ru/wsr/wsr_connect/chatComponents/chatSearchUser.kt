@@ -20,13 +20,13 @@ class ChatSearchUser : HBox() {
     private lateinit var location: URL
 
     @FXML
-    private lateinit var avatarImage: ImageView
+    lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var root: HBox
 
     @FXML
-    private lateinit var username: Label
+    lateinit var username: Label
 
     @FXML
     fun initialize() {

@@ -18,6 +18,9 @@ class MessageAttachmentController: HBox() {
     private lateinit var location: URL
 
     @FXML
+    private lateinit var root: HBox
+
+    @FXML
     private lateinit var avatarImage: ImageView
 
     @FXML

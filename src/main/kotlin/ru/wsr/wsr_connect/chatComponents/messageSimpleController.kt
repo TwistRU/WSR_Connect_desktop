@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
+import javax.swing.GroupLayout
 
 class MessageSimpleController(username: String, msgText: String, frwMsgUsername: String = "", frwMsgText: String = "",
                               mine: Boolean = false) : HBox() {
@@ -16,6 +17,9 @@ class MessageSimpleController(username: String, msgText: String, frwMsgUsername:
 
     @FXML
     private lateinit var location: URL
+
+    @FXML
+    private lateinit var root: HBox
 
     @FXML
     private lateinit var avatarImage: ImageView
@@ -57,7 +61,7 @@ class MessageSimpleController(username: String, msgText: String, frwMsgUsername:
 
         this.username.text = username
         this.messageText.text = msgText
-        if (frwMsgUsername == "" || frwMsgText == ""){
+        if (frwMsgUsername == "" || frwMsgText == ""){  // удалить пересланное сообщение - не работает
             this.children.remove(this.username)
         }
         else {

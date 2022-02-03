@@ -88,10 +88,10 @@ object APIObject {
         install(JsonFeature) { serializer = KotlinxSerializer() }
         defaultRequest {
             host = APIObject.host
-            port = APIObject.port
+//            port = APIObject.port
         }
     }
-    private const val host = "localhost"
+    private const val host = "wsr-connect-api.herokuapp.com"
     private const val port = 5000
     private var token = ""
     private var savedLogin = ""

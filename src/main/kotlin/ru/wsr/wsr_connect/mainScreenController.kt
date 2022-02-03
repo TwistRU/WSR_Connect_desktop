@@ -4,6 +4,7 @@ import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
@@ -12,8 +13,11 @@ import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
 import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
+import java.io.File
+import java.io.FileInputStream
 import java.net.URL
 import java.util.*
+import javax.imageio.stream.FileImageInputStream
 
 
 class MainScreenController : BorderPane() {
@@ -59,6 +63,9 @@ class MainScreenController : BorderPane() {
         this.calendarButton.setOnAction { e -> taskmanager() }
         this.avatarButton.setOnAction { e -> profile() }
         this.gearButton.setOnAction { e -> settings() }
+
+
+        fetch_userinfo()
 
     }
 
@@ -121,6 +128,18 @@ class MainScreenController : BorderPane() {
     fun logout(scope: MainContainer){
         scope.purge_data()
         scope.center = scope.login_screen
+    }
+
+    fun fetch_userinfo(){
+        APIObject.profileInfo {
+            if (it.img_url != null){
+                val path = it.img_url
+                APIObject.getFile(path) {
+                    println(it.path)
+                    avatarImage.image = Image(it.path)
+                }
+            }
+        }
     }
 
 }
