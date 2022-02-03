@@ -33,21 +33,25 @@
     -fx-spacing: 20;
 }
 
-.createCompanyButton {
-    -fx-background-color: transparant;
+.button {
+    -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-font-size: 18;
-    -fx-pref-height: 40;
     -fx-cursor: HAND;
+    -fx-font-size: 18;
+}
+
+.createCompanyButton {
+    -fx-pref-height: 40;
 }
 
 .selectImageButton {
-    -fx-background-color: transparant;
-    -fx-text-fill: white;
-    -fx-font-size: 18;
     -fx-pref-width: 50;
     -fx-pref-height: 50;
-    -fx-cursor: HAND;
+}
+
+.selectCompanyButton {
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
 }
 
 .fieldInfo {
@@ -55,4 +59,11 @@
     -fx-border-color: #f0f0f0;
     -fx-border-radius: 5;
     -fx-font-size: 18;
+}
+
+.elementInvitation {
+    -fx-border-radius: 5;
+    -fx-border-color: white;
+    -fx-background-color:  #BBDEFB;
+    -fx-background-radius: 5;
 }
