@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
+import ru.wsr.wsr_connect.APIObject
 import ru.wsr.wsr_connect.MainContainer
 import ru.wsr.wsr_connect.Message
 
@@ -38,6 +39,9 @@ class ChatSearchCard : HBox() {
     var chat_id: Int? = null
     var Parent: ChatMessagesWindowCOntroller? = null
 
+    var cashed_messages = arrayListOf<Message>()
+    var loaded = false
+
 
     @FXML
     fun initialize() {
@@ -58,8 +62,22 @@ class ChatSearchCard : HBox() {
     }
 
     fun display_chat(Parent: ChatMessagesWindowCOntroller?){
+        if (!loaded){
+            load_messages()
+            loaded = true
+        }
         Parent!!.messageScope.children.clear()
-        this.chat_id?.let { Parent.display_messages(it) }
+
+        Parent.display_messages(this)
+    }
+
+    private fun load_messages() {
+        cashed_messages.clear()
+        APIObject.getChatMessages(this.chat_id!!) {
+            for (message in it.messages!!){
+                cashed_messages.add(message)
+            }
+        }
     }
 
 }

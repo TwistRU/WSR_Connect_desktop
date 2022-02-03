@@ -17,39 +17,51 @@
             <HBox.margin>
                 <Insets right="5.0" />
             </HBox.margin></ImageView>
-        <HBox style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-radius: 7;">
-            <children>
-            <ImageView fx:id="previewImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../../assets/images/sample_message_image_1.jpg" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER_LEFT">
-               <children>
-                  <Text fx:id="filenName" fill="#1565c0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMG_666_nazvanie.jpg" />
-                  <Text fx:id="fileSize" fill="#718ce7" strokeType="OUTSIDE" strokeWidth="0.0" text="1.3 MB" />
-               </children>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </VBox>
-                <VBox alignment="BOTTOM_CENTER" prefWidth="25.0">
-                    <children>
-                        <Text fx:id="time" fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="16:20">
-                            <VBox.margin>
-                                <Insets bottom="5.0" right="5.0" />
-                            </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="8.0" />
-                     </font>
-                        </Text>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
+      <VBox style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-radius: 7;">
+         <children>
+            <Text fx:id="username" fill="#1565c0" strokeType="OUTSIDE" strokeWidth="0.0" text="Photograph">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Text>
+              <HBox>
+                  <children>
+                  <ImageView fx:id="previewImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../../assets/images/sample_message_image_1.jpg" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT">
+                     <children>
+                        <Text fx:id="fileName" fill="#1565c0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMG_666_nazvanie.jpg" />
+                        <Text fx:id="fileSize" fill="#718ce7" strokeType="OUTSIDE" strokeWidth="0.0" text="1.3 MB" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                      <VBox alignment="BOTTOM_CENTER" prefWidth="25.0">
+                          <children>
+                              <Text fx:id="time" fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="16:20">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" right="5.0" />
+                                  </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="8.0" />
+                           </font>
+                              </Text>
+                          </children>
+                      </VBox>
+                  </children>
+              </HBox>
+         </children>
+      </VBox>
     </children>
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" />

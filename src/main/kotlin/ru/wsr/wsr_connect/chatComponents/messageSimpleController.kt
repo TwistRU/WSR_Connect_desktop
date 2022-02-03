@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
 
-class MessageSimpleController(username: String, msgText: String?, mine: Boolean? = false, msg_id: Int) : HBox() {
+class MessageSimpleController(username: String, msgText: String?, mine: Boolean? = false, msg_id: Int, time: String = "16.20") : HBox() {
 
 
     @FXML
@@ -52,10 +52,13 @@ class MessageSimpleController(username: String, msgText: String?, mine: Boolean?
         fxmlLoader.setController(this)
         fxmlLoader.load<Any>()
 
+
         this.username.text = username
         this.messageText.text = msgText
         this.myMessage = mine
         this.message_id = msg_id
+        this.myMessage = mine
+        this.time.text = time
 //        if (mine == true){
 //        }
     }

@@ -8,8 +8,9 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
 
+class MessageAttachmentController(username: String, fileName: String = "IMG_653214.png", fileSize: String = "1.4 MB",
+                                  mine: Boolean = false, time: String = "16.20"): HBox() {
 
-class MessageAttachmentController: HBox() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -21,19 +22,24 @@ class MessageAttachmentController: HBox() {
     private lateinit var root: HBox
 
     @FXML
-    private lateinit var avatarImage: ImageView
+    private lateinit var username: Text
+
+    @FXML
+    lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var fileSize: Text
 
     @FXML
-    private lateinit var filenName: Text
+    private lateinit var fileName: Text
 
     @FXML
-    private lateinit var previewImage: ImageView
+    lateinit var previewImage: ImageView
 
     @FXML
     private lateinit var time: Text
+
+    var myMessage: Boolean? = null
 
     @FXML
     fun initialize() {
@@ -44,6 +50,12 @@ class MessageAttachmentController: HBox() {
         fxmlLoader.setRoot(this)
         fxmlLoader.setController(this)
         fxmlLoader.load<Any>()
+
+        this.username.text = username
+        this.fileName.text = fileName
+        this.fileSize.text = fileSize
+        this.myMessage = mine
+        this.time.text = time
     }
 
 }

@@ -48,30 +48,27 @@ class ChatScreenController() : BorderPane() {
         makeSearchButton()
         addMessangerBar()
 
+        APIObject.profileInfo {
+            this.nameField.text = it.username
+        }
+
         APIObject.getChats() {
-            for (chat in it.chats){
+            for (chat in it.chats) {
                 val curChat = ChatSearchCard()
                 curChat.chatName.text = chat.chat_name
                 curChat.chatLastMessage.text = chat.last_message?.message_body
-                curChat.chat_id = chat.last_message?.chat_id
+                curChat.chat_id = chat.chat_id
                 curChat.Parent = messageWindow
-                if (chat.last_message?.img_url != null) {
-                    curChat.avatarImage.image = Image(chat.last_message.img_url)
+
+                if (chat.last_message?.img_url != null){
+                    APIObject.getFile(chat.last_message.img_url){
+                        curChat.avatarImage.image = Image(it.path)
+                    }
                 }
                 resultList.children.add(curChat)
             }
         }
-
-
-//        for (user in users){
-//            resultList.children.add(user)
-//            user.setOnMouseClicked { e -> user.get_chat( this) }
-//        }
-//        for (dialog in dialogs){
-//            resultList.children.add(dialog)
-//        }
     }
-
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("chatScreen.fxml"))
         fxmlLoader.setRoot(this)

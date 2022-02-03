@@ -5,25 +5,17 @@ import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.image.ImageView
-import javafx.scene.layout.Background
-import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.HBox
-import javafx.scene.paint.Paint
 import javafx.scene.text.Text
-import java.awt.Color
-import javax.swing.GroupLayout
 
-class MessageForwardedController(username: String, msgText: String, frwMsgUsername: String = "", frwMsgText: String = "",
-                              mine: Boolean = false) : HBox() {
+class MessageForwardedController(username: String, msgText: String?, frwMsgUsername: String = "", frwMsgText: String? = "",
+                              mine: Boolean? = false, time: String = "16.20") : HBox() {
 
     @FXML
     private lateinit var resources: ResourceBundle
 
     @FXML
     private lateinit var location: URL
-
-    @FXML
-    private lateinit var root: HBox
 
     @FXML
     private lateinit var avatarImage: ImageView
@@ -44,19 +36,20 @@ class MessageForwardedController(username: String, msgText: String, frwMsgUserna
     private lateinit var messageText: Text
 
     @FXML
-    private lateinit var username: Text
+    private lateinit var root: HBox
 
     @FXML
     private lateinit var time: Text
 
+    @FXML
+    private lateinit var username: Text
 
-    var myMessage = false
+
+    var myMessage: Boolean? = false
 
     @FXML
     fun initialize() {
-        if (this.forwardedMessageUsername.text == "" || this.forwardedMessageText.text == ""){
-            this.frwMsgBox
-        }
+
     }
 
 
@@ -66,15 +59,14 @@ class MessageForwardedController(username: String, msgText: String, frwMsgUserna
         fxmlLoader.setController(this)
         fxmlLoader.load<Any>()
 
+
         this.username.text = username
         this.messageText.text = msgText
-        if (frwMsgUsername == "" || frwMsgText == ""){  // удалить пересланное сообщение - не работает
+        this.forwardedMessageUsername.text = frwMsgUsername
+        this.forwardedMessageText.text = frwMsgText
+        this.myMessage = mine
+        this.time.text = time
 
-        }
-        else {
-            this.forwardedMessageUsername.text = frwMsgUsername
-            this.forwardedMessageText.text = frwMsgText
-        }
     }
 
 }

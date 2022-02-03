@@ -1,15 +1,13 @@
 package ru.wsr.wsr_connect.chatComponents
 
-import javafx.scene.layout.Region
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
-import javafx.scene.layout.Background
-import javafx.scene.layout.BackgroundFill
-import javafx.scene.layout.VBox
+import javafx.scene.image.Image
+import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.text.Text
 import ru.wsr.wsr_connect.APIObject
@@ -33,13 +31,6 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
     lateinit var messageScope: VBox
 
 
-//    val mockup_messages = arrayListOf(
-//        MessageSimpleController("Tovarish Stalin", "Hello world"),
-//        MessageSimpleController("Adolf Gitler", "Bla bla bla"),
-//        MessageSimpleController("Umpa lumpa", "ololololo"),
-//        MessageAttachmentController(),
-//        MessageAttachmentController()
-//    )
 
     var current_chat_id: Int? = null
 
@@ -72,12 +63,27 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
         sendButton.graphic = send
     }
 
-    fun display_messages(chat_id: Int){
-        APIObject.getChatMessages(chat_id) {
-            for (message in it.messages!!){
-                val msg = MessageSimpleController(message.creator_name, message.message_body, message.mine, message.message_id)
+    fun display_messages(cash_source: ChatSearchCard){
+        messageScope.children.clear()
+        var msg: HBox? = null
+        for (message in cash_source.cashed_messages){
+            if (message.parent_message != null){   // forwarded
+//                msg = MessageForwardedController(message.creator_name, message.message_body, message.parent_message.creator_name,
+//                    message.parent_message.message_body, message.mine)
+            }
+            else if (message.img_url == null){    // simple
+                msg = MessageSimpleController(message.creator_name, message.message_body, message.mine, message.message_id)
                 messageScope.children.add(msg)
             }
+            else {                              // with image
+                msg = MessageAttachmentController(message.creator_name)
+                APIObject.getFile(message.img_url) {
+                    msg.previewImage.image = Image(it.path)
+                }
+                messageScope.children.add(msg)
+            }
+//            messageScope.children.add(msg)
         }
+
     }
 }
