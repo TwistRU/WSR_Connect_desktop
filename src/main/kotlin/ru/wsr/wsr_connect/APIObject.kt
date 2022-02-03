@@ -59,8 +59,16 @@ data class Message(
     val message_body: String? = null,
     val img_url: String? = null,
     val parent_message: Message? = null,
+    val mine: Boolean? = null,
     val read: Boolean,
     val edit: Boolean
+)
+
+@Serializable
+data class ChatMessagesResponse(
+    val success: Boolean,
+    val errors: List<String>,
+    val messages: List<Message>? = null
 )
 
 @Serializable
@@ -168,6 +176,19 @@ object APIObject {
             val response: ChatsResponse = client.get {
                 url { encodedPath = "/chats" }
                 parameter("search", search)
+                headers {
+                    append(HttpHeaders.Authorization, "Bearer $token")
+                }
+            }
+            func(response)
+        }
+    }
+
+    fun getChatMessages(chat_id: Int, func: (ChatMessagesResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: ChatMessagesResponse = client.get {
+                url { encodedPath = "/chat/messages" }
+                parameter("chat_id", chat_id)
                 headers {
                     append(HttpHeaders.Authorization, "Bearer $token")
                 }
