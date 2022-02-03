@@ -6,7 +6,6 @@ import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +13,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.javafx.JavaFx
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.encodeToJsonElement
 import kotlin.coroutines.CoroutineContext
 
 
@@ -25,6 +21,18 @@ data class SignInRequest(val username: String, val password: String)
 
 @Serializable
 data class SignInResponse(val success: Boolean, val errors: List<String>, val token: String = "")
+
+@Serializable
+data class UserInfoResponse(
+    val user_id: Int,
+    val username: String,
+    val first_name: String?,
+    val last_name: String?,
+    val email: String,
+    val img_url: String?,
+    val company_id: Int?,
+    val about_me: String?
+)
 
 @DelicateCoroutinesApi
 object APIObject {
@@ -50,23 +58,23 @@ object APIObject {
                 contentType(ContentType.Application.Json)
                 body = request
             }
-            if (response.success){
-                token = response.token.substring(1, response.token.length - 1)
+            if (response.success) {
+                token = response.token
             }
             func(response)
         }
     }
 
-    fun profileInfo(func: () -> Unit) {
+    fun profileInfo(func: (UserInfoResponse) -> Unit) {
         if (token != "") {
-            val t = GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
-                val response: JsonObject = client.get {
+            GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+                val response: UserInfoResponse = client.get {
                     url { encodedPath = "/profile/info" }
                     headers {
                         append(HttpHeaders.Authorization, "Bearer $token")
                     }
                 }
-                println(response)
+                func(response)
             }
         }
     }
