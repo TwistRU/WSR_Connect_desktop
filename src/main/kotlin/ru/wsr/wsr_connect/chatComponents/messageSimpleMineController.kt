@@ -8,9 +8,8 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
-import ru.wsr.wsr_connect.APIObject
 
-class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox() {
+class MessageSimpleMineController(msg_id: Int, cash_source: ChatSearchCard) : HBox() {
 
 
     @FXML
@@ -18,9 +17,6 @@ class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox()
 
     @FXML
     private lateinit var location: URL
-
-    @FXML
-    private lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var messageContainer: HBox
@@ -39,6 +35,7 @@ class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox()
 
 
 
+
     @FXML
     fun initialize() {
 
@@ -46,16 +43,18 @@ class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox()
 
 
     init {
-        val fxmlLoader = FXMLLoader(javaClass.getResource("messageSimple.fxml"))
+        val fxmlLoader = FXMLLoader(javaClass.getResource("messageSimpleMine.fxml"))
         fxmlLoader.setRoot(this)
         fxmlLoader.setController(this)
         fxmlLoader.load<Any>()
+
 
         this.username.text = cash_source.cashed_messages[msg_id]?.creator_name ?: "Noname"
         this.messageText.text = cash_source.cashed_messages[msg_id]?.message_body ?: "Unknown text"
 
         var t = cash_source.cashed_messages[msg_id]?.created_at
         this.time.text = t!!.substring(11, 16)
+
 
 //        this.username.text = username
 //        this.messageText.text = msgText

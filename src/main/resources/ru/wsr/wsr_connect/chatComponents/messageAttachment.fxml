@@ -40,7 +40,7 @@
                   <VBox alignment="CENTER_LEFT">
                      <children>
                         <Text fx:id="fileName" fill="#1565c0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMG_666_nazvanie.jpg" />
-                        <Text fx:id="fileSize" fill="#718ce7" strokeType="OUTSIDE" strokeWidth="0.0" text="1.3 MB" />
+                        <Text fx:id="fileSize" fill="#5775d9" strokeType="OUTSIDE" strokeWidth="0.0" text="1.3 MB" />
                      </children>
                      <HBox.margin>
                         <Insets left="5.0" />

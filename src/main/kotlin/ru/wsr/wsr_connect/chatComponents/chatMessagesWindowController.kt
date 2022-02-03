@@ -73,29 +73,27 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
     fun display_messages(cash_source: ChatSearchCard){
         messageScope.children.clear()
         var msg: HBox? = null
-        for (message in cash_source.cashed_messages){
-            if (message.parent_message != null){   // forwarded
-//                msg = MessageForwardedController(message.creator_name, message.message_body, message.parent_message.creator_name,
-//                    message.parent_message.message_body, message.mine)
-                msg = MessageForwardedController(message.mine)
-                msg.username.text = message.creator_name
-                msg.messageText.text = message.message_body
-                msg.forwardedMessageUsername.text = message.parent_message.creator_name
-                msg.forwardedMessageText.text = message.parent_message.message_body
-            }
-            else if (message.img_url == null){    // simple
-                msg = MessageSimpleController(message.creator_name, message.message_body, message.mine, message.message_id)
-//                messageScope.children.add(msg)
-            }
-            else {                              // with image
-                msg = MessageAttachmentController(message.creator_name)
-                APIObject.getFile(message.img_url) {
-                    msg.previewImage.image = Image(it.path)
+        for ((id, message) in cash_source.cashed_messages){
+            if (!message.mine!!) {
+                if (message.parent_message != null) {   // forwarded
+                    msg = MessageForwardedController(message.message_id, cash_source)
+                } else if (message.img_url == null) {    // simple
+                    msg = MessageSimpleController(message.message_id, cash_source)
+                } else {                              // with image
+                    msg = MessageAttachmentController(message.message_id, cash_source)
                 }
-//                messageScope.children.add(msg)
+            } else {
+                if (message.parent_message != null) {   // forwarded
+                    msg = MessageForwardedMineController(message.message_id, cash_source)
+                } else if (message.img_url == null) {    // simple
+                    msg = MessageSimpleMineController(message.message_id, cash_source)
+                } else {                              // with image
+                    msg = MessageAttachmentMineController(message.message_id, cash_source)
+                }
             }
             messageScope.children.add(msg)
         }
+        cash_source.cashed_messages
     }
 
     fun send_message(){

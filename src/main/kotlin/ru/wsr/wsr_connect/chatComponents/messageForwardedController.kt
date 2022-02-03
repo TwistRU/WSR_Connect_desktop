@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
 
-class MessageForwardedController(mine: Boolean? = false) : HBox() {
+class MessageForwardedController(msg_id: Int, cash_source: ChatSearchCard) : HBox() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -44,7 +44,6 @@ class MessageForwardedController(mine: Boolean? = false) : HBox() {
     lateinit var username: Text
 
 
-    var myMessage: Boolean? = false
 
     @FXML
     fun initialize() {
@@ -59,11 +58,19 @@ class MessageForwardedController(mine: Boolean? = false) : HBox() {
         fxmlLoader.load<Any>()
 
 
+        this.username.text = cash_source.cashed_messages[msg_id]?.creator_name ?: "Noname"
+        this.messageText.text = cash_source.cashed_messages[msg_id]?.message_body ?: "Unknown text"
+        this.forwardedMessageUsername.text = cash_source.cashed_messages[msg_id]?.parent_message!!.creator_name
+        this.forwardedMessageText.text = cash_source.cashed_messages[msg_id]?.parent_message!!.message_body
+
+        var t = cash_source.cashed_messages[msg_id]?.created_at
+        this.time.text = t!!.substring(11, 16)
+
+
 //        this.username.text = username
 //        this.messageText.text = msgText
 //        this.forwardedMessageUsername.text = frwMsgUsername
 //        this.forwardedMessageText.text = frwMsgText
-        this.myMessage = mine
 //        this.time.text = time
 
     }

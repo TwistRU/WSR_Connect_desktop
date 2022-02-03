@@ -39,7 +39,7 @@ class ChatSearchCard : HBox() {
     var chat_id: Int? = null
     var Parent: ChatMessagesWindowCOntroller? = null
 
-    var cashed_messages = arrayListOf<Message>()
+    var cashed_messages = mutableMapOf<Int, Message>()
     var loaded = false
 
 
@@ -76,7 +76,7 @@ class ChatSearchCard : HBox() {
         cashed_messages.clear()
         APIObject.getChatMessages(this.chat_id!!) {
             for (message in it.messages!!){
-                cashed_messages.add(message)
+                cashed_messages.put(message.message_id, message)
             }
         }
     }
