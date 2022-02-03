@@ -14,8 +14,10 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Window
+import ru.wsr.wsr_connect.APIObject
 import ru.wsr.wsr_connect.MainContainer
 import ru.wsr.wsr_connect.MainScreenController
+import ru.wsr.wsr_connect.SignInRequest
 
 class LoginScreenController : StackPane() {
 
@@ -91,8 +93,14 @@ class LoginScreenController : StackPane() {
     }
 
     fun authorise(scope: MainContainer){
-        scope.create_screens()
-        scope.center = scope.main_screen
+        APIObject.auth(SignInRequest(emailField.text, passwordField.text)) {
+            if (it.success) {
+                scope.create_screens()
+                scope.center = scope.main_screen
+            } else{
+                println(it.errors)
+            }
+        }
     }
 
     fun switch_to_signup(scope: MainContainer){
