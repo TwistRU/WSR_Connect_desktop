@@ -6,7 +6,6 @@ import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +13,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.javafx.JavaFx
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.encodeToJsonElement
 import kotlin.coroutines.CoroutineContext
 
 
@@ -25,6 +22,17 @@ data class SignInRequest(val username: String, val password: String)
 
 @Serializable
 data class SignInResponse(val success: Boolean, val errors: List<String>, val token: String = "")
+
+@Serializable
+data class BaseResponse(
+    val success: Boolean,
+    val errors: List<String>
+)
+
+@Serializable
+data class AcceptInvitationRequest(
+    val invitation_id: Int
+)
 
 @DelicateCoroutinesApi
 object APIObject {
@@ -50,7 +58,7 @@ object APIObject {
                 contentType(ContentType.Application.Json)
                 body = request
             }
-            if (response.success){
+            if (response.success) {
                 token = response.token.substring(1, response.token.length - 1)
             }
             func(response)
@@ -71,4 +79,24 @@ object APIObject {
         }
     }
 
+    fun postCompany(company_name: String, func: (BaseResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: BaseResponse = client.post {
+                url { encodedPath = "/company" }
+                parameter("company_name", company_name)
+            }
+            func(response)
+        }
+    }
+
+    fun acceptInvitation(request: AcceptInvitationRequest, func: (BaseResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: BaseResponse = client.put {
+                url { encodedPath = "/invitations" }
+                contentType(ContentType.Application.Json)
+                body = request
+            }
+            func(response)
+        }
+    }
 }
