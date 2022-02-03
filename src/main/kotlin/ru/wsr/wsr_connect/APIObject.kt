@@ -90,6 +90,19 @@ data class ChatsResponse(
     val chats: List<Chat>
 )
 
+@Serializable
+data class SimpleChatMessageRequest(
+    val chat_id: Int,
+    val message_body: String,
+    val replied_message_id: Int? = null
+)
+
+@Serializable
+data class BaseResponse(
+    val success: Boolean,
+    val errors: List<String>
+)
+
 @DelicateCoroutinesApi
 object APIObject {
     private val client = HttpClient(CIO) {
@@ -160,6 +173,9 @@ object APIObject {
             GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
                 val response: HttpResponse = client.get {
                     url { encodedPath = url }
+                    headers {
+                        append(HttpHeaders.Authorization, "Bearer $token")
+                    }
                 }
                 val responseBody: ByteArray = response.receive()
                 file.writeBytes(responseBody)
@@ -192,6 +208,20 @@ object APIObject {
                 headers {
                     append(HttpHeaders.Authorization, "Bearer $token")
                 }
+            }
+            func(response)
+        }
+    }
+
+    fun postSimpleChatMessage(request: SimpleChatMessageRequest, func: (BaseResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: BaseResponse = client.post {
+                url { encodedPath = "/chat/message" }
+                headers {
+                    append(HttpHeaders.Authorization, "Bearer $token")
+                }
+                contentType(ContentType.Application.Json)
+                body = request
             }
             func(response)
         }
