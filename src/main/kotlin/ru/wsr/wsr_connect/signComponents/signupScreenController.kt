@@ -130,6 +130,12 @@ class SignupScreenController : StackPane() {
                     errorStatus.text = it.errors[0]
                     println(it.errors)
                 }
+
+                usernameField.text = ""
+                emailField.text = ""
+                passwordField.text = ""
+                firstNameField.text = ""
+                lastNameField.text = ""
             }
         }
     }

@@ -103,11 +103,11 @@ class LoginScreenController : StackPane() {
                 scope.create_screens()
                 scope.center = scope.main_screen
             } else{
-                emailField.text = ""
-                passwordField.text = ""
                 errorStatus.text = it.errors[0]
                 println(it.errors)
             }
+            emailField.text = ""
+            passwordField.text = ""
         }
     }
 
