@@ -1,11 +1,13 @@
 package ru.wsr.wsr_connect
 
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +15,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.javafx.JavaFx
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import java.io.File
 import kotlin.coroutines.CoroutineContext
 
 
@@ -104,6 +107,26 @@ object APIObject {
                 }
                 func(response)
             }
+        }
+    }
+
+    fun getFile(url: String, func: (File) -> Unit) {
+        val path = File(System.getenv("LOCALAPPDATA") + "/WSRConnect")
+        path.mkdir()
+        val file = File(path.absolutePath + "/$url.cache")
+        println(file)
+        if (file.createNewFile()) {
+            GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+                val response: HttpResponse = client.get {
+                    url { encodedPath = url }
+                }
+                val responseBody: ByteArray = response.receive()
+                file.writeBytes(responseBody)
+                println("A file saved to ${file.path}")
+                func(file)
+            }
+        } else {
+            func(file)
         }
     }
 
