@@ -49,6 +49,39 @@ data class UserInfoResponse(
     val about_me: String?
 )
 
+@Serializable
+data class Message(
+    val message_id: Int,
+    val creator_id: Int,
+    val creator_name: String,
+    val chat_id: Int,
+    val created_at: String,
+    val message_body: String? = null,
+    val img_url: String? = null,
+    val parent_message: Message? = null,
+    val read: Boolean,
+    val edit: Boolean
+)
+
+@Serializable
+data class Chat(
+    val chat_name: String,
+    val chat_id: Int,
+    val last_message: Message? = null,
+    val mute: Boolean,
+    val pin: Boolean,
+    val group: Boolean,
+    val img_url: String? = null,
+    val mine: Boolean
+)
+
+@Serializable
+data class ChatsResponse(
+    val success: Boolean,
+    val errors: List<String>,
+    val chats: List<Chat>
+)
+
 @DelicateCoroutinesApi
 object APIObject {
     private val client = HttpClient(CIO) {
@@ -130,4 +163,16 @@ object APIObject {
         }
     }
 
+    fun getChats(search: String? = null, func: (ChatsResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: ChatsResponse = client.get {
+                url { encodedPath = "/chats" }
+                parameter("search", search)
+                headers {
+                    append(HttpHeaders.Authorization, "Bearer $token")
+                }
+            }
+            func(response)
+        }
+    }
 }
