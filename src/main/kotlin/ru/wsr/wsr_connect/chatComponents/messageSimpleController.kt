@@ -1,5 +1,6 @@
 package ru.wsr.wsr_connect.chatComponents
 
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
@@ -7,10 +8,9 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
-import javax.swing.GroupLayout
 
-class MessageSimpleController(username: String, msgText: String, frwMsgUsername: String = "", frwMsgText: String = "",
-                              mine: Boolean = false) : HBox() {
+class MessageSimpleController(username: String, msgText: String?, mine: Boolean? = false, msg_id: Int) : HBox() {
+
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -19,37 +19,30 @@ class MessageSimpleController(username: String, msgText: String, frwMsgUsername:
     private lateinit var location: URL
 
     @FXML
-    private lateinit var root: HBox
-
-    @FXML
     private lateinit var avatarImage: ImageView
 
     @FXML
-    private lateinit var forwardedMessageText: Text
-
-    @FXML
-    private lateinit var forwardedMessageUsername: Text
-
-    @FXML
-    private lateinit var frwMsgBox: HBox
+    private lateinit var messageContainer: HBox
 
     @FXML
     private lateinit var messageText: Text
 
     @FXML
-    private lateinit var username: Text
+    private lateinit var root: HBox
 
     @FXML
     private lateinit var time: Text
 
+    @FXML
+    private lateinit var username: Text
 
-    var myMessage = false
+
+    var myMessage: Boolean? = false
+    var message_id = -1
 
     @FXML
     fun initialize() {
-        if (this.forwardedMessageUsername.text == "" || this.forwardedMessageText.text == ""){
-            this.frwMsgBox
-        }
+
     }
 
 
@@ -61,13 +54,12 @@ class MessageSimpleController(username: String, msgText: String, frwMsgUsername:
 
         this.username.text = username
         this.messageText.text = msgText
-        if (frwMsgUsername == "" || frwMsgText == ""){  // удалить пересланное сообщение - не работает
-            this.children.remove(this.username)
-        }
-        else {
-            this.forwardedMessageUsername.text = frwMsgUsername
-            this.forwardedMessageText.text = frwMsgText
-        }
+        this.myMessage = mine
+        this.message_id = msg_id
+//        if (mine == true){
+//        }
     }
+
+
 
 }

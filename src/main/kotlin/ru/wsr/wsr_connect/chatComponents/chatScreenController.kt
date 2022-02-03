@@ -41,17 +41,7 @@ class ChatScreenController() : BorderPane() {
 
 
 
-    val messagesWindow = null
-
-    var users = arrayListOf<ChatSearchUser>(
-        ChatSearchUser(),
-        ChatSearchUser()
-    )
-
-    var dialogs = arrayListOf<ChatSearchCard>(
-        ChatSearchCard(),
-        ChatSearchCard()
-    )
+    var messageWindow: ChatMessagesWindowCOntroller? = null
 
     @FXML
     fun initialize() {
@@ -63,8 +53,10 @@ class ChatScreenController() : BorderPane() {
                 val curChat = ChatSearchCard()
                 curChat.chatName.text = chat.chat_name
                 curChat.chatLastMessage.text = chat.last_message?.message_body
+                curChat.chat_id = chat.last_message?.chat_id
+                curChat.Parent = messageWindow
                 if (chat.last_message?.img_url != null) {
-                    curChat.avatarImage.image = Image(chat.last_message?.img_url)
+                    curChat.avatarImage.image = Image(chat.last_message.img_url)
                 }
                 resultList.children.add(curChat)
             }
@@ -94,8 +86,8 @@ class ChatScreenController() : BorderPane() {
     }
 
     fun addMessangerBar(){
-        val messages_window = ChatMessagesWindowCOntroller()
-        this.center = messages_window
+        messageWindow = ChatMessagesWindowCOntroller()
+        this.center = messageWindow
     }
 
 }

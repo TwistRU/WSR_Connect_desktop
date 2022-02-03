@@ -11,7 +11,7 @@
     <content>
         <VBox>
             <children>
-                <VBox fx:id="messageScope" alignment="BOTTOM_LEFT" style="-fx-background-color: #BBDEFB;" VBox.vgrow="ALWAYS">
+                <VBox fx:id="messageScope" alignment="BOTTOM_LEFT" style="-fx-background-color: #B5DEFB;" VBox.vgrow="ALWAYS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></VBox>

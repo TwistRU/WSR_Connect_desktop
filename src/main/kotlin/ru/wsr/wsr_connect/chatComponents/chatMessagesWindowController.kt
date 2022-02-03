@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Text
+import ru.wsr.wsr_connect.APIObject
 
 class ChatMessagesWindowCOntroller : ScrollPane() {
 
@@ -29,38 +30,27 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
     private lateinit var sendButton: Button
 
     @FXML
-    private lateinit var messageScope: VBox
+    lateinit var messageScope: VBox
 
 
-    val mockup_messages = arrayListOf(
-        MessageSimpleController("Tovarish Stalin", "Hello world"),
-        MessageSimpleController("Adolf Gitler", "Bla bla bla", "Tovarish Stalin", "Hello world"),
-        MessageSimpleController("Umpa lumpa", "ololololo"),
-        MessageAttachmentController(),
-        MessageAttachmentController()
-    )
+//    val mockup_messages = arrayListOf(
+//        MessageSimpleController("Tovarish Stalin", "Hello world"),
+//        MessageSimpleController("Adolf Gitler", "Bla bla bla"),
+//        MessageSimpleController("Umpa lumpa", "ololololo"),
+//        MessageAttachmentController(),
+//        MessageAttachmentController()
+//    )
+
+    var current_chat_id: Int? = null
 
     @FXML
     fun initialize() {
         makeChatButtons()
 
-//        mockup_messages[0].messageText = Text("Hello, world")
-//        mockup_messages[0].senderName = Text("Ivan")
-////        mockup_messages[0].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
 //
-//        mockup_messages[1].messageText = Text("Ras dva tri afj asdf")
-//        mockup_messages[1].senderName = Text("Anonim")
-////        mockup_messages[1].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
-//
-//        mockup_messages[2].messageText = Text("Kak dela bla bla bla")
-//        mockup_messages[2].children.remove(mockup_messages[2].avatarImage)
-//        mockup_messages[2].senderName = Text("John")
-//        mockup_messages[2].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
-
-
-        for (msg in mockup_messages){
-            messageScope.children.add(msg)
-        }
+//        for (msg in mockup_messages){
+//            messageScope.children.add(msg)
+//        }
 
     }
 
@@ -80,5 +70,14 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
         val send = Region()
         send.styleClass.add("send")
         sendButton.graphic = send
+    }
+
+    fun display_messages(chat_id: Int){
+        APIObject.getChatMessages(chat_id) {
+            for (message in it.messages!!){
+                val msg = MessageSimpleController(message.creator_name, message.message_body, message.mine, message.message_id)
+                messageScope.children.add(msg)
+            }
+        }
     }
 }

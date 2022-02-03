@@ -1,6 +1,7 @@
 package ru.wsr.wsr_connect.chatComponents
 
 
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
@@ -10,6 +11,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
+import ru.wsr.wsr_connect.MainContainer
 import ru.wsr.wsr_connect.Message
 
 class ChatSearchCard : HBox() {
@@ -33,10 +35,14 @@ class ChatSearchCard : HBox() {
     lateinit var chatName: Label
 
 
+    var chat_id: Int? = null
+    var Parent: ChatMessagesWindowCOntroller? = null
+
 
     @FXML
     fun initialize() {
         makeAvatar()
+        root.onMouseClicked = EventHandler { display_chat(Parent) }
     }
 
     init {
@@ -49,6 +55,11 @@ class ChatSearchCard : HBox() {
     private fun makeAvatar(){
         val clip = Circle(30.0, 30.0, 25.0)
         avatarImage.clip = clip
+    }
+
+    fun display_chat(Parent: ChatMessagesWindowCOntroller?){
+        Parent!!.messageScope.children.clear()
+        this.chat_id?.let { Parent.display_messages(it) }
     }
 
 }
