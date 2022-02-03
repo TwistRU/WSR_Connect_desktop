@@ -9,20 +9,14 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: BBDEFB;" stylesheets="@../../../../styles/tablesScreenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Вы еще не состоите в компании. Создайте новую или вступите в существующую по приглашению, чтобы получить доступ к доскам" />
-         </children></Pane>
-   </top>
    <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="leftObject" prefWidth="0.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="rightObject" prefWidth="0.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="bottomObject" prefHeight="0.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <HBox alignment="CENTER" spacing="50.0" style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
@@ -64,7 +58,11 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя Компании" />
                                        </children>
                                     </VBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Текст приглашения" />
+                                    <TextFlow prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Текст приглашения" />
+                                       </children>
+                                    </TextFlow>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <Button fx:id="createCompanyButton1" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="+" />
@@ -103,4 +101,11 @@
          </children>
       </HBox>
    </center>
+   <top>
+      <TextFlow fx:id="topObject" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Вы еще не состоите в компании. Создайте новую или вступите в существующую по приглашению, чтобы получить доступ к доскам." />
+         </children>
+      </TextFlow>
+   </top>
 </BorderPane>
