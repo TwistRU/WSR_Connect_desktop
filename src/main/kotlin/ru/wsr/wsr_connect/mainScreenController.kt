@@ -5,21 +5,19 @@ import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.image.ImageView
-import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
-import ru.wsr.wsr_connect.chatComponents.ChatSearchUser
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
 import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
-import java.awt.event.ActionEvent
 import java.net.URL
 import java.util.*
 
 
 class MainScreenController : BorderPane() {
+
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -28,10 +26,10 @@ class MainScreenController : BorderPane() {
     private lateinit var location: URL
 
     @FXML
-    lateinit var avatarImage: ImageView
+    private lateinit var avatarButton: Button
 
     @FXML
-    private lateinit var avatarButton: Button
+    lateinit var avatarImage: ImageView
 
     @FXML
     private lateinit var calendarButton: Button
@@ -40,25 +38,10 @@ class MainScreenController : BorderPane() {
     private lateinit var gearButton: Button
 
     @FXML
-    private lateinit var componentsRoot: BorderPane
-
-    @FXML
-    private lateinit var globalBox: BorderPane
-
-    @FXML
     private lateinit var messagesButton: Button
 
-    @FXML
-    private lateinit var sideBar: VBox
 
-
-//    var cards = arrayOf(
-//        ChatSearchUser(),
-//        ChatSearchUser(),
-//        ChatSearchUser(),
-//        ChatSearchUser()
-//    )
-
+    var Parent: MainContainer? = null
 
     @FXML
     fun initialize() {
@@ -66,13 +49,16 @@ class MainScreenController : BorderPane() {
         makeButtons()
         makeAvatar()
 
-        this.componentsRoot.left = null
+        this.center = null
 
-        this.messagesButton.setOnAction { e -> messages() }
+        this.avatarImage.onMouseClicked = EventHandler { e ->
+            logout(Parent!!)
+        }
+
+        this.messagesButton.setOnAction { e -> messenger() }
         this.calendarButton.setOnAction { e -> taskmanager() }
         this.avatarButton.setOnAction { e -> profile() }
         this.gearButton.setOnAction { e -> settings() }
-
 
     }
 
@@ -89,7 +75,6 @@ class MainScreenController : BorderPane() {
         val messages = Region()
         messages.styleClass.add("messages")
         messagesButton.graphic = messages
-
 
         val calendar = Region()
         calendar.styleClass.add("calendar")
@@ -111,25 +96,31 @@ class MainScreenController : BorderPane() {
 
 
 
-    private fun messages() {
+    private fun messenger(){
         val chat_screen = ChatScreenController()
-        this.componentsRoot.left = chat_screen
+        this.center = chat_screen
     }
 
     private fun taskmanager(){
         val taskmanager_screen = TablesScreenController()
-        this.componentsRoot.left = taskmanager_screen
+        this.center = taskmanager_screen
     }
 
     private fun profile(){
         val profile_screen = ProfileScreenController()
-        this.componentsRoot.left = profile_screen
+        this.center = profile_screen
     }
 
     private fun settings(){
-        this.componentsRoot.left = null
+        this.center = null
     }
 
 
+
+
+    fun logout(scope: MainContainer){
+        scope.purge_data()
+        scope.center = scope.login_screen
+    }
 
 }

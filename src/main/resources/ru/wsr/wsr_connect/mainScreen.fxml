@@ -37,7 +37,4 @@
          </VBox>
       </VBox>
    </left>
-   <center>
-      <BorderPane fx:id="componentsRoot" BorderPane.alignment="CENTER" />
-   </center>
 </fx:root>

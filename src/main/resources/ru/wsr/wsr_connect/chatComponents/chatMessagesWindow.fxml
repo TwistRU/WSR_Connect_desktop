@@ -7,11 +7,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" type="ScrollPane" vbarPolicy="NEVER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<fx:root fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" type="ScrollPane" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <content>
         <VBox>
             <children>
-                <VBox style="-fx-background-color: #BBDEFB;" VBox.vgrow="ALWAYS" />
+                <VBox fx:id="messageScope" alignment="BOTTOM_LEFT" style="-fx-background-color: #BBDEFB;" VBox.vgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></VBox>
                 <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1565C0;">
                     <children>
                         <Button fx:id="attachButton" mnemonicParsing="false" styleClass="attachButton" stylesheets="@../../../../styles/chatScreenStyles.css">

@@ -1,5 +1,7 @@
 package ru.wsr.wsr_connect.signComponents
 
+import com.sun.tools.javac.Main
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
@@ -12,6 +14,7 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Window
+import ru.wsr.wsr_connect.MainContainer
 import ru.wsr.wsr_connect.MainScreenController
 
 class LoginScreenController : StackPane() {
@@ -43,6 +46,9 @@ class LoginScreenController : StackPane() {
     @FXML
     private lateinit var textFieldsBox: VBox
 
+
+    var Parent: MainContainer? = null
+
     @FXML
     fun initialize() {
 
@@ -55,6 +61,9 @@ class LoginScreenController : StackPane() {
         background.fitWidth = 1280.0
 
         //TODO Исправить: функциональные поля выходт за нижнюю границу
+
+        signInButton.onAction = EventHandler { authorise(Parent!!) }
+        signUpButton.onAction = EventHandler { switch_to_signup(Parent!!) }
 
 
 
@@ -79,6 +88,15 @@ class LoginScreenController : StackPane() {
                 background.fitHeight = new
             }
         }
+    }
+
+    fun authorise(scope: MainContainer){
+        scope.create_screens()
+        scope.center = scope.main_screen
+    }
+
+    fun switch_to_signup(scope: MainContainer){
+        scope.center = scope.signup_screen
     }
 
 }

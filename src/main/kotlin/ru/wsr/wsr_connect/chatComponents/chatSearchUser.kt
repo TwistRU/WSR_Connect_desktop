@@ -1,10 +1,12 @@
 package ru.wsr.wsr_connect.chatComponents
 
 
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.shape.Circle
@@ -24,6 +26,9 @@ class ChatSearchUser : HBox() {
     private lateinit var root: HBox
 
     @FXML
+    private lateinit var username: Label
+
+    @FXML
     fun initialize() {
         makeAvatar()
     }
@@ -40,5 +45,8 @@ class ChatSearchUser : HBox() {
         avatarImage.clip = clip
     }
 
+    fun get_chat(scope: ChatScreenController){
+//        scope.
+    }
 
 }

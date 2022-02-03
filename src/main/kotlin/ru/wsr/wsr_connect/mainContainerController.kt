@@ -5,7 +5,6 @@ import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.layout.BorderPane
-import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import ru.wsr.wsr_connect.signComponents.LoginScreenController
 import ru.wsr.wsr_connect.signComponents.SignupScreenController
 
@@ -17,27 +16,25 @@ class MainContainer : BorderPane() {
     @FXML
     private lateinit var location: URL
 
+
+    var login_screen: LoginScreenController? = null
+    var signup_screen: SignupScreenController? = null
+    var main_screen: MainScreenController? = null
+
     @FXML
     fun initialize() {
 
-        val login_screen = LoginScreenController()
-        val signup_screen = SignupScreenController()
-        val main_screen = MainScreenController()
-
+        login_screen = LoginScreenController()
+        login_screen!!.Parent = this
+        signup_screen = SignupScreenController()
+        signup_screen!!.Parent = this
 
         this.center = login_screen
-
-        login_screen.signInButton.setOnAction { e -> this.center = main_screen }
-        login_screen.signUpButton.setOnAction { e -> this.center = signup_screen }
-        signup_screen.backButton.setOnAction { e -> this.center = login_screen }
-        main_screen.avatarImage.setOnMouseClicked { e ->
-            this.center = login_screen
-            main_screen.center = null
-        }
 
 
 
     }
+
 
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("mainContainer.fxml"))
@@ -47,5 +44,14 @@ class MainContainer : BorderPane() {
     }
 
 
+
+    fun create_screens(){
+        main_screen = MainScreenController()
+        main_screen!!.Parent = this
+    }
+
+    fun purge_data(){
+        main_screen = null
+    }
 
 }
