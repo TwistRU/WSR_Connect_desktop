@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
+import ru.wsr.wsr_connect.tasksComponents.StartCompanyScreenController
 import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
 import java.net.URL
 import java.util.*
@@ -102,7 +103,7 @@ class MainScreenController : BorderPane() {
     }
 
     private fun taskmanager(){
-        val taskmanager_screen = TablesScreenController()
+        val taskmanager_screen = StartCompanyScreenController()
         this.center = taskmanager_screen
     }
 
