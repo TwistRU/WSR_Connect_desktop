@@ -23,6 +23,18 @@ data class SignInRequest(val username: String, val password: String)
 data class SignInResponse(val success: Boolean, val errors: List<String>, val token: String = "")
 
 @Serializable
+data class SignUpRequest(
+    val username: String,
+    val email: String,
+    val first_name: String,
+    val last_name: String,
+    val password: String
+)
+
+@Serializable
+data class SignUpResponse(val success: Boolean, val errors: List<String>, val token: String = "")
+
+@Serializable
 data class UserInfoResponse(
     val user_id: Int,
     val username: String,
@@ -55,6 +67,22 @@ object APIObject {
         GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
             val response: SignInResponse = client.post {
                 url { encodedPath = "/auth/login" }
+                contentType(ContentType.Application.Json)
+                body = request
+            }
+            if (response.success) {
+                token = response.token
+            }
+            func(response)
+        }
+    }
+
+    fun registration(request: SignUpRequest, func: (SignUpResponse) -> Unit) {
+        savedLogin = request.username
+        savedPassword = request.password
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: SignUpResponse = client.post {
+                url { encodedPath = "/auth/registration" }
                 contentType(ContentType.Application.Json)
                 body = request
             }
