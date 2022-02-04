@@ -124,6 +124,7 @@ object APIObject {
     private var token = ""
     private var savedLogin = ""
     private var savedPassword = ""
+    var userInfo: UserInfoResponse? = null
 
     fun auth(request: SignInRequest, func: (SignInResponse) -> Unit) {
         savedLogin = request.username
@@ -136,6 +137,7 @@ object APIObject {
             }
             if (response.success) {
                 token = response.token
+                profileInfo {}
                 mSocket.connect()
                 mSocket.emit("authorization", token)
             }
@@ -156,6 +158,8 @@ object APIObject {
             if (response.success) {
                 token = response.token
             }
+            profileInfo {}
+            func(response)
         }
     }
 
@@ -179,6 +183,7 @@ object APIObject {
                         append(HttpHeaders.Authorization, "Bearer $token")
                     }
                 }
+                userInfo = response
                 func(response)
             }
         }
