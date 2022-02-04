@@ -9,12 +9,16 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.socket.client.IO
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.javafx.JavaFx
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import org.json.JSONObject
 import java.io.File
 import kotlin.coroutines.CoroutineContext
 
@@ -23,15 +27,13 @@ import kotlin.coroutines.CoroutineContext
 data class SignInRequest(val username: String, val password: String)
 
 @Serializable
-data class SignInResponse(val success: Boolean, val errors: List<String>, val token: String = "")
+data class SignInResponse(
+    val success: Boolean, val errors: List<String>, val token: String = "", val my_id: Int? = null
+)
 
 @Serializable
 data class SignUpRequest(
-    val username: String,
-    val email: String,
-    val first_name: String,
-    val last_name: String,
-    val password: String
+    val username: String, val email: String, val first_name: String, val last_name: String, val password: String
 )
 
 @Serializable
@@ -54,8 +56,9 @@ data class Message(
     val message_id: Int,
     val creator_id: Int,
     val creator_name: String,
-    val chat_id: Int,
+    var chat_id: Int,
     val created_at: String,
+    val creator_img_url: String? = null,
     val message_body: String? = null,
     val img_url: String? = null,
     val parent_message: Message? = null,
@@ -66,9 +69,7 @@ data class Message(
 
 @Serializable
 data class ChatMessagesResponse(
-    val success: Boolean,
-    val errors: List<String>,
-    val messages: List<Message>? = null
+    val success: Boolean, val errors: List<String>, val messages: List<Message>? = null
 )
 
 @Serializable
@@ -85,35 +86,36 @@ data class Chat(
 
 @Serializable
 data class ChatsResponse(
-    val success: Boolean,
-    val errors: List<String>,
-    val chats: List<Chat>
+    val success: Boolean, val errors: List<String>, val chats: List<Chat>
 )
 
 @Serializable
 data class SimpleChatMessageRequest(
-    val chat_id: Int,
-    val message_body: String,
-    val replied_message_id: Int? = null
+    val chat_id: Int, val message_body: String, val replied_message_id: Int? = null
 )
 
 @Serializable
 data class BaseResponse(
-    val success: Boolean,
-    val errors: List<String>
+    val success: Boolean, val errors: List<String>
 )
 
 @DelicateCoroutinesApi
 object APIObject {
     private val client = HttpClient(CIO) {
-        install(JsonFeature) { serializer = KotlinxSerializer() }
+        install(JsonFeature) {
+            serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
+                ignoreUnknownKeys = true
+            })
+        }
+
         defaultRequest {
             host = APIObject.host
-//            port = APIObject.port
+            port = APIObject.port
         }
     }
-    private const val host = "wsr-connect-api.herokuapp.com"
+    private const val host = "127.0.0.1"
     private const val port = 5000
+    private val mSocket = IO.socket("http://$host:$port")
     private var token = ""
     private var savedLogin = ""
     private var savedPassword = ""
@@ -129,6 +131,8 @@ object APIObject {
             }
             if (response.success) {
                 token = response.token
+                mSocket.connect()
+                mSocket.emit("authorization", token)
             }
             func(response)
         }
@@ -224,6 +228,12 @@ object APIObject {
                 body = request
             }
             func(response)
+        }
+    }
+
+    fun setOnMessageEvent(func: (Message) -> Unit) {
+        mSocket.on("msg") {
+            func(Json.decodeFromString<Message>((it[0] as JSONObject).toString()))
         }
     }
 }
