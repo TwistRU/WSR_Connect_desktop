@@ -20,6 +20,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import java.io.File
+import kotlinx.serialization.json.JsonObject
 import kotlin.coroutines.CoroutineContext
 
 
@@ -97,6 +98,10 @@ data class SimpleChatMessageRequest(
 @Serializable
 data class BaseResponse(
     val success: Boolean, val errors: List<String>
+
+@Serializable
+data class AcceptInvitationRequest(
+    val invitation_id: Int
 )
 
 @DelicateCoroutinesApi
@@ -107,7 +112,6 @@ object APIObject {
                 ignoreUnknownKeys = true
             })
         }
-
         defaultRequest {
             host = APIObject.host
             port = APIObject.port
@@ -138,6 +142,7 @@ object APIObject {
         }
     }
 
+
     fun registration(request: SignUpRequest, func: (SignUpResponse) -> Unit) {
         savedLogin = request.username
         savedPassword = request.password
@@ -149,6 +154,16 @@ object APIObject {
             }
             if (response.success) {
                 token = response.token
+            }
+        }
+    }
+
+
+    fun postCompany(company_name: String, func: (BaseResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: BaseResponse = client.post {
+                url { encodedPath = "/company" }
+                parameter("company_name", company_name)
             }
             func(response)
         }
@@ -234,6 +249,17 @@ object APIObject {
     fun setOnMessageEvent(func: (Message) -> Unit) {
         mSocket.on("msg") {
             func(Json.decodeFromString<Message>((it[0] as JSONObject).toString()))
+        }
+    }
+    
+    fun acceptInvitation(request: AcceptInvitationRequest, func: (BaseResponse) -> Unit) {
+        GlobalScope.launch(Dispatchers.JavaFx as CoroutineContext) {
+            val response: BaseResponse = client.put {
+                url { encodedPath = "/invitations" }
+                contentType(ContentType.Application.Json)
+                body = request
+            }
+            func(response)
         }
     }
 }
