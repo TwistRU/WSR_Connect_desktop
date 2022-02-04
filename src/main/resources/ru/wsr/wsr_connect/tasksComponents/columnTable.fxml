@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="5.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" stylesheets="@../../../../styles/tablesScreenStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextFlow prefHeight="30.0" textAlignment="CENTER">
+         <children>
+            <Text fx:id="columnTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Column Title" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <HBox alignment="CENTER">
+         <children>
+            <TextField fx:id="cardText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" styleClass="addCardField" text="Добавить карточку..." />
+          <Button fx:id="addCard" mnemonicParsing="false" styleClass="addCardButton" text="+" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

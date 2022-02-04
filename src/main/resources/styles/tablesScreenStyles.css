@@ -64,6 +64,20 @@
 .elementInvitation {
     -fx-border-radius: 5;
     -fx-border-color: white;
-    -fx-background-color:  #BBDEFB;
+    -fx-background-color: #BBDEFB;
     -fx-background-radius: 5;
+}
+
+.addCardField {
+    -fx-background-color: #BBDEFB;
+    -fx-border-color: #f0f0f0;
+    -fx-border-radius: 5;
+    -fx-font-size: 16;
+ }
+
+.addCardButton {
+    -fx-pref-width: 40;
+    -fx-pref-height: 40;
+    -fx-border-radius: 5;
+    -fx-border-color: white;
 }
