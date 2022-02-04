@@ -35,6 +35,9 @@ class ChatMessagesWindowCOntroller : VBox() {
     lateinit var messageScope: VBox
 
     @FXML
+    private lateinit var scrollPane: ScrollPane
+
+    @FXML
     private lateinit var input: TextField
 
 
@@ -74,6 +77,7 @@ class ChatMessagesWindowCOntroller : VBox() {
 
     fun display_messages(cash_source: ChatSearchCard){
         messageScope.children.clear()
+        scrollPane.vvalue = 1.0
         var msg: HBox? = null
         for ((id, message) in cash_source.cashed_messages){
             if (user_id != message.creator_id) {
@@ -95,14 +99,14 @@ class ChatMessagesWindowCOntroller : VBox() {
             }
             messageScope.children.add(msg)
         }
-        cash_source.cashed_messages
+//        cash_source.cashed_messages
     }
 
     fun send_simple_message(){
         if (input.text != "" && input.text != "" && current_chat_id != null){
-            input.text = ""
             APIObject.postSimpleChatMessage(SimpleChatMessageRequest(current_chat_id!!, input.text)) {
             }
+            input.text = ""
         }
     }
 

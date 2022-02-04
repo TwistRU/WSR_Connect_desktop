@@ -11,6 +11,8 @@ import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import ru.wsr.wsr_connect.APIObject
+import ru.wsr.wsr_connect.Chat
+import ru.wsr.wsr_connect.Message
 
 
 class ChatScreenController() : BorderPane() {
@@ -39,6 +41,8 @@ class ChatScreenController() : BorderPane() {
 
 
     var messageWindow: ChatMessagesWindowCOntroller? = null
+    var chats = mutableMapOf<Int, Pair<Chat, ChatSearchCard>>()
+
 
     @FXML
     fun initialize() {
@@ -57,13 +61,19 @@ class ChatScreenController() : BorderPane() {
                 curChat.chat_id = chat.chat_id
                 curChat.Parent = messageWindow
 
-                if (chat.last_message?.img_url != null){
-                    APIObject.getFile(chat.last_message.img_url){
+                if (chat.last_message?.creator_img_url != null){
+                    APIObject.getFile(chat.last_message?.creator_img_url!!){
                         curChat.avatarImage.image = Image(it.path)
                     }
                 }
+                chats.put(chat.chat_id, Pair(chat, curChat))
                 resultList.children.add(curChat)
             }
+        }
+
+        APIObject.setOnMessageEvent {
+            chats[it.chat_id]?.first?.last_message = it
+//            messageWindow?.display_messages(chats[it.chat_id]!!.second)
         }
     }
     init {
