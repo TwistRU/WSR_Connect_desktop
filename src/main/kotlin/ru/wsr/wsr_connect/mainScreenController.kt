@@ -49,7 +49,7 @@ class MainScreenController : BorderPane() {
 
 
     var chat_screen: ChatScreenController? = null
-    var taskmanager_screen: TablesScreenController? = null
+    var taskmanager_screen: StartCompanyScreenController? = null
     var profile_screen: ProfileScreenController? = null
 
     @FXML

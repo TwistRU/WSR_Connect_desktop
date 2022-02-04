@@ -98,6 +98,7 @@ data class SimpleChatMessageRequest(
 @Serializable
 data class BaseResponse(
     val success: Boolean, val errors: List<String>
+)
 
 @Serializable
 data class AcceptInvitationRequest(
