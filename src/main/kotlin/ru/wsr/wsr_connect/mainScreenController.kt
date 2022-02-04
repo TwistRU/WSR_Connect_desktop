@@ -8,17 +8,15 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
-import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
 import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
-import java.io.File
-import java.io.FileInputStream
 import java.net.URL
 import java.util.*
-import javax.imageio.stream.FileImageInputStream
 
+
+var user_id = -1
 
 class MainScreenController : BorderPane() {
 
@@ -46,6 +44,7 @@ class MainScreenController : BorderPane() {
 
 
     var Parent: MainContainer? = null
+
 
 
     var chat_screen: ChatScreenController? = null
@@ -137,6 +136,7 @@ class MainScreenController : BorderPane() {
 
     fun fetch_userinfo(){
         APIObject.profileInfo {
+            user_id = it.user_id
             if (it.img_url != null){
                 val path = it.img_url
                 APIObject.getFile(path) {

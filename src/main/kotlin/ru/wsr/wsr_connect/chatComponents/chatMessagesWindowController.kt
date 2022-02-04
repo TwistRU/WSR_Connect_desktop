@@ -8,12 +8,13 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextField
-import javafx.scene.image.Image
 import javafx.scene.layout.*
-import javafx.scene.paint.Color
-import javafx.scene.text.Text
+import javafx.stage.FileChooser
+import javafx.stage.Stage
 import ru.wsr.wsr_connect.APIObject
 import ru.wsr.wsr_connect.SimpleChatMessageRequest
+import ru.wsr.wsr_connect.user_id
+import java.io.File
 
 class ChatMessagesWindowCOntroller : ScrollPane() {
 
@@ -48,7 +49,8 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
 //        for (msg in mockup_messages){
 //            messageScope.children.add(msg)
 //        }
-        sendButton.onAction = EventHandler { send_message() }
+        sendButton.onAction = EventHandler { send_simple_message() }
+        attachButton.onAction = EventHandler { send_attachment() }
 
     }
 
@@ -74,7 +76,7 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
         messageScope.children.clear()
         var msg: HBox? = null
         for ((id, message) in cash_source.cashed_messages){
-            if (!message.mine!!) {
+            if (user_id != message.creator_id) {
                 if (message.parent_message != null) {   // forwarded
                     msg = MessageForwardedController(message.message_id, cash_source)
                 } else if (message.img_url == null) {    // simple
@@ -96,10 +98,19 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
         cash_source.cashed_messages
     }
 
-    fun send_message(){
+    fun send_simple_message(){
         if (input.text != "" && input.text != "" && current_chat_id != null){
+            input.text = ""
             APIObject.postSimpleChatMessage(SimpleChatMessageRequest(current_chat_id!!, input.text)) {
             }
         }
+    }
+
+    fun send_attachment(){
+        var path_to_image: File? = null
+        val fileChooser = FileChooser()
+        val imageFilter = FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.bmp")
+        fileChooser.extensionFilters.add(imageFilter)
+        path_to_image = fileChooser.showOpenDialog(Stage())
     }
 }

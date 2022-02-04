@@ -55,6 +55,7 @@ class MainContainer : BorderPane() {
         main_screen?.taskmanager_screen = null
         main_screen?.profile_screen = null
         main_screen = null
+        user_id = -1
     }
 
 }
