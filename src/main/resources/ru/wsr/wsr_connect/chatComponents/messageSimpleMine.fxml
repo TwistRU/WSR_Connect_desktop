@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<fx:root fx:id="root" alignment="TOP_RIGHT" style="-fx-background-color: transparent;" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <HBox fx:id="messageContainer" alignment="TOP_RIGHT" style="-fx-background-color: #90CAF9; -fx-background-radius: 7; -fx-border-radius: 7;">
+         <children>
+              <VBox fillWidth="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                  <children>
+                      <TextFlow maxWidth="400.0">
+                     <children>
+                        <Text fx:id="username" fill="#1565c0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tovarish Stalin">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </TextFlow>
+                      <TextFlow maxWidth="400.0">
+                     <children>
+                        <Text fx:id="messageText" strokeType="OUTSIDE" strokeWidth="0.0" text="Message sdf jh l asfd asf asdf qwr qwe acv zxl lkn powie poiq;flaksdjf a;lsdkfj;alksfj ;oaiewj poiewj ;l lkj k;hytf" />
+                     </children>
+                     <padding>
+                        <Insets right="5.0" top="5.0" />
+                     </padding>
+                  </TextFlow>
+                  </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </padding>
+              </VBox>
+            <VBox alignment="BOTTOM_CENTER" prefWidth="25.0">
+               <children>
+                  <Text fx:id="time" fill="#0000007f" strokeType="OUTSIDE" strokeWidth="0.0" text="16:20">
+                     <font>
+                        <Font name="System Bold" size="8.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</fx:root>

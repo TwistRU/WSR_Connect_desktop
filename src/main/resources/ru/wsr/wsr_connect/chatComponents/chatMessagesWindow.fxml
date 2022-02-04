@@ -7,34 +7,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" type="ScrollPane" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <content>
-        <VBox>
-            <children>
-                <VBox fx:id="messageScope" alignment="BOTTOM_LEFT" style="-fx-background-color: #B5DEFB;" VBox.vgrow="ALWAYS">
+
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+          <content>
+                <VBox fx:id="messageScope" alignment="BOTTOM_LEFT" style="-fx-background-color: #B5DEFB;">
                <opaqueInsets>
                   <Insets />
-               </opaqueInsets></VBox>
-                <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1565C0;">
-                    <children>
-                        <Button fx:id="attachButton" mnemonicParsing="false" styleClass="attachButton" stylesheets="@../../../../styles/chatScreenStyles.css">
-                            <HBox.margin>
-                                <Insets bottom="7.0" left="5.0" right="5.0" top="7.0" />
-                            </HBox.margin>
-                        </Button>
-                        <TextField fx:id="input" styleClass="chatTextField" stylesheets="@../../../../styles/chatScreenStyles.css" HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets bottom="10.0" top="10.0" />
-                            </HBox.margin>
-                        </TextField>
-                        <Button fx:id="sendButton" mnemonicParsing="false" styleClass="sendButton" stylesheets="@../../../../styles/chatScreenStyles.css">
-                            <HBox.margin>
-                                <Insets bottom="7.0" left="5.0" right="5.0" top="7.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-    </content>
+               </opaqueInsets>
+            </VBox>
+          </content>
+      </ScrollPane>
+          <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1565C0;">
+              <children>
+                  <Button fx:id="attachButton" mnemonicParsing="false" styleClass="attachButton" stylesheets="@../../../../styles/chatScreenStyles.css">
+                      <HBox.margin>
+                          <Insets bottom="7.0" left="5.0" right="5.0" top="7.0" />
+                      </HBox.margin>
+                  </Button>
+                  <TextField fx:id="input" styleClass="chatTextField" stylesheets="@../../../../styles/chatScreenStyles.css" HBox.hgrow="ALWAYS">
+                      <HBox.margin>
+                          <Insets bottom="10.0" top="10.0" />
+                      </HBox.margin>
+                  </TextField>
+                  <Button fx:id="sendButton" mnemonicParsing="false" styleClass="sendButton" stylesheets="@../../../../styles/chatScreenStyles.css">
+                      <HBox.margin>
+                          <Insets bottom="7.0" left="5.0" right="5.0" top="7.0" />
+                      </HBox.margin>
+                  </Button>
+              </children>
+          </HBox>
+   </children>
 </fx:root>

@@ -31,9 +31,6 @@ class ChatScreenController() : BorderPane() {
     private lateinit var resultList: VBox
 
     @FXML
-    private lateinit var resultsBox: BorderPane
-
-    @FXML
     private lateinit var root: BorderPane
 
     @FXML
@@ -52,7 +49,7 @@ class ChatScreenController() : BorderPane() {
             this.nameField.text = it.username
         }
 
-        APIObject.getChats() {
+        APIObject.getChats {
             for (chat in it.chats) {
                 val curChat = ChatSearchCard()
                 curChat.chatName.text = chat.chat_name
