@@ -76,7 +76,7 @@ class ChatMessagesWindowCOntroller : VBox() {
     }
 
     fun display_messages(cash_source: ChatSearchCard){
-        messageScope.children.clear()
+        this.messageScope.children.clear()
         scrollPane.vvalue = 1.0
         var msg: HBox? = null
         for ((id, message) in cash_source.cashed_messages){
