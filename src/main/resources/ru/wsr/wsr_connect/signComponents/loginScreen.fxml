@@ -18,9 +18,9 @@
    </ImageView>
    <BorderPane>
       <center>
-         <VBox fx:id="boxBox" fillWidth="false" maxHeight="500.0" maxWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css" BorderPane.alignment="BOTTOM_LEFT">
-            <VBox fx:id="textFieldsBox" styleClass="textFieldsBox" stylesheets="@../../../../styles/loginScreenStyles.css">
-               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <VBox fx:id="boxBox" maxHeight="500.0" maxWidth="500.0" styleClass="boxBox" stylesheets="@../../../../styles/loginScreenStyles.css" BorderPane.alignment="BOTTOM_LEFT">
+            <VBox fx:id="textFieldsBox" prefWidth="500.0" styleClass="textFieldsBox" stylesheets="@../../../../styles/loginScreenStyles.css">
+               <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                   <font>
                      <Font name="Calibri" size="45.0" />
                   </font>
@@ -46,6 +46,17 @@
                      <Font size="24.0" />
                   </font>
                </PasswordField>
+               <Text fx:id="errorStatus" fill="#f23d3d" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="200.0" styleClass="buttonBox" stylesheets="@../../../../styles/loginScreenStyles.css">
                <Button fx:id="signInButton" mnemonicParsing="false" stylesheets="@../../../../styles/loginScreenStyles.css" text="Sign In" textFill="#2196f3">

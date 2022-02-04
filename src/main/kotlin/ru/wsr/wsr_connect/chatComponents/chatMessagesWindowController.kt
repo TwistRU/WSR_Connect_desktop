@@ -1,19 +1,22 @@
 package ru.wsr.wsr_connect.chatComponents
 
-import javafx.scene.layout.Region
+import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
-import javafx.scene.layout.Background
-import javafx.scene.layout.BackgroundFill
-import javafx.scene.layout.VBox
-import javafx.scene.paint.Color
-import javafx.scene.text.Text
+import javafx.scene.control.TextField
+import javafx.scene.layout.*
+import javafx.stage.FileChooser
+import javafx.stage.Stage
+import ru.wsr.wsr_connect.APIObject
+import ru.wsr.wsr_connect.SimpleChatMessageRequest
+import ru.wsr.wsr_connect.user_id
+import java.io.File
 
-class ChatMessagesWindowCOntroller : ScrollPane() {
+class ChatMessagesWindowCOntroller : VBox() {
 
 
     @FXML
@@ -29,38 +32,25 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
     private lateinit var sendButton: Button
 
     @FXML
-    private lateinit var messageScope: VBox
+    lateinit var messageScope: VBox
+
+    @FXML
+    private lateinit var input: TextField
 
 
-    val mockup_messages = arrayListOf(
-        MessageSimpleController("Tovarish Stalin", "Hello world"),
-        MessageSimpleController("Adolf Gitler", "Bla bla bla", "Tovarish Stalin", "Hello world"),
-        MessageSimpleController("Umpa lumpa", "ololololo"),
-        MessageAttachmentController(),
-        MessageAttachmentController()
-    )
+
+    var current_chat_id: Int? = null
 
     @FXML
     fun initialize() {
         makeChatButtons()
 
-//        mockup_messages[0].messageText = Text("Hello, world")
-//        mockup_messages[0].senderName = Text("Ivan")
-////        mockup_messages[0].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
 //
-//        mockup_messages[1].messageText = Text("Ras dva tri afj asdf")
-//        mockup_messages[1].senderName = Text("Anonim")
-////        mockup_messages[1].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
-//
-//        mockup_messages[2].messageText = Text("Kak dela bla bla bla")
-//        mockup_messages[2].children.remove(mockup_messages[2].avatarImage)
-//        mockup_messages[2].senderName = Text("John")
-//        mockup_messages[2].messageBox.background = Background(BackgroundFill(Color.valueOf("#BBDEFB"), null, null))
-
-
-        for (msg in mockup_messages){
-            messageScope.children.add(msg)
-        }
+//        for (msg in mockup_messages){
+//            messageScope.children.add(msg)
+//        }
+        sendButton.onAction = EventHandler { send_simple_message() }
+        attachButton.onAction = EventHandler { send_attachment() }
 
     }
 
@@ -80,5 +70,47 @@ class ChatMessagesWindowCOntroller : ScrollPane() {
         val send = Region()
         send.styleClass.add("send")
         sendButton.graphic = send
+    }
+
+    fun display_messages(cash_source: ChatSearchCard){
+        messageScope.children.clear()
+        var msg: HBox? = null
+        for ((id, message) in cash_source.cashed_messages){
+            if (user_id != message.creator_id) {
+                if (message.parent_message != null) {   // forwarded
+                    msg = MessageForwardedController(message.message_id, cash_source)
+                } else if (message.img_url == null) {    // simple
+                    msg = MessageSimpleController(message.message_id, cash_source)
+                } else {                              // with image
+                    msg = MessageAttachmentController(message.message_id, cash_source)
+                }
+            } else {
+                if (message.parent_message != null) {   // forwarded
+                    msg = MessageForwardedMineController(message.message_id, cash_source)
+                } else if (message.img_url == null) {    // simple
+                    msg = MessageSimpleMineController(message.message_id, cash_source)
+                } else {                              // with image
+                    msg = MessageAttachmentMineController(message.message_id, cash_source)
+                }
+            }
+            messageScope.children.add(msg)
+        }
+        cash_source.cashed_messages
+    }
+
+    fun send_simple_message(){
+        if (input.text != "" && input.text != "" && current_chat_id != null){
+            input.text = ""
+            APIObject.postSimpleChatMessage(SimpleChatMessageRequest(current_chat_id!!, input.text)) {
+            }
+        }
+    }
+
+    fun send_attachment(){
+        var path_to_image: File? = null
+        val fileChooser = FileChooser()
+        val imageFilter = FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.bmp")
+        fileChooser.extensionFilters.add(imageFilter)
+        path_to_image = fileChooser.showOpenDialog(Stage())
     }
 }

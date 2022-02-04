@@ -13,11 +13,13 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
+import javafx.scene.text.Text
 import javafx.stage.Window
 import ru.wsr.wsr_connect.APIObject
 import ru.wsr.wsr_connect.MainContainer
 import ru.wsr.wsr_connect.MainScreenController
 import ru.wsr.wsr_connect.SignInRequest
+
 
 class LoginScreenController : StackPane() {
 
@@ -47,6 +49,9 @@ class LoginScreenController : StackPane() {
 
     @FXML
     private lateinit var textFieldsBox: VBox
+
+    @FXML
+    private lateinit var errorStatus: Text
 
 
     var Parent: MainContainer? = null
@@ -98,10 +103,12 @@ class LoginScreenController : StackPane() {
                 scope.create_screens()
                 scope.center = scope.main_screen
             } else{
+                errorStatus.text = it.errors[0]
                 println(it.errors)
             }
+            emailField.text = ""
+            passwordField.text = ""
         }
-
     }
 
     fun switch_to_signup(scope: MainContainer){

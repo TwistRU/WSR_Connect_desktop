@@ -5,14 +5,18 @@ import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
-import javafx.scene.Parent
 import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
+import javafx.scene.layout.HBox
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
+import javafx.scene.text.Text
+import ru.wsr.wsr_connect.APIObject
 import ru.wsr.wsr_connect.MainContainer
+import ru.wsr.wsr_connect.SignInRequest
+import ru.wsr.wsr_connect.SignUpRequest
 
 class SignupScreenController : StackPane() {
 
@@ -23,25 +27,43 @@ class SignupScreenController : StackPane() {
     private lateinit var location: URL
 
     @FXML
+    private lateinit var backButton: Button
+
+    @FXML
     private lateinit var background: ImageView
 
     @FXML
-    private lateinit var boxBox: VBox
+    private lateinit var boxBox: HBox
 
     @FXML
-    lateinit var emailField: TextField
+    private lateinit var confirmPasswordField: PasswordField
 
     @FXML
-    lateinit var passwordField: PasswordField
+    private lateinit var errorStatus: Text
 
     @FXML
-    lateinit var signUpButton: Button
+    private lateinit var firstNameField: TextField
 
     @FXML
-    lateinit var backButton: Button
+    private lateinit var lastNameField: TextField
+
+    @FXML
+    private lateinit var emailField: TextField
+
+    @FXML
+    private lateinit var passwordField: PasswordField
+
+    @FXML
+    private lateinit var signUpButton: Button
+
+    @FXML
+    private lateinit var stackPane: StackPane
 
     @FXML
     private lateinit var textFieldsBox: VBox
+
+    @FXML
+    private lateinit var usernameField: TextField
 
 
     var Parent: MainContainer? = null
@@ -58,7 +80,7 @@ class SignupScreenController : StackPane() {
         background.fitWidth = 1280.0
 
 
-        signUpButton.onAction = EventHandler { authorise(Parent!!) }
+        signUpButton.onAction = EventHandler { register(Parent!!) }
         backButton.onAction = EventHandler { switch_to_login(Parent!!) }
 
     }
@@ -70,8 +92,6 @@ class SignupScreenController : StackPane() {
     }
 
     fun changeSize(){
-        background.fitHeight = 720.0
-        background.fitWidth = 1280.0
         this.scene.widthProperty().addListener { _, old, new ->
             if (this.scene.height / new as Double <= 0.5625){
                 background.fitHeight = new / 0.5625
@@ -87,10 +107,37 @@ class SignupScreenController : StackPane() {
     }
 
 
+    fun register(scope: MainContainer){
+        if (passwordField.text != confirmPasswordField.text){
+            errorStatus.text = "Passwords don't match"
+        } else if (passwordField.text == ""){
+            errorStatus.text = "Password field is empty"
+        } else {
+            APIObject.registration(
+                SignUpRequest(
+                    usernameField.text,
+                    emailField.text,
+                    firstNameField.text,
+                    lastNameField.text,
+                    passwordField.text
+                )
+            ) {
+                if (it.success) {
+                    scope.create_screens()
+                    scope.center = scope.main_screen
 
-    fun authorise(scope: MainContainer){
-        scope.create_screens()
-        scope.center = scope.main_screen
+                } else {
+                    errorStatus.text = it.errors[0]
+                    println(it.errors)
+                }
+
+                usernameField.text = ""
+                emailField.text = ""
+                passwordField.text = ""
+                firstNameField.text = ""
+                lastNameField.text = ""
+            }
+        }
     }
 
     fun switch_to_login(scope: MainContainer){

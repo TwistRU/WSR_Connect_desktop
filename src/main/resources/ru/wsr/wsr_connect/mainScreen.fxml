@@ -11,7 +11,7 @@
    <left>
       <VBox style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
          <ImageView fx:id="avatarImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
-            <Image url="@../../../assets/images/avatar_image_1.jpg" />
+            <Image url="@../../../assets/images/default_avatar.png" />
          </ImageView>
          <VBox fx:id="sideBar" alignment="CENTER_LEFT" spacing="40.0" style="-fx-background-color: #1565C0;" VBox.vgrow="ALWAYS">
             <Button fx:id="messagesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="sideButton">

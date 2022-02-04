@@ -79,3 +79,16 @@
     -fx-max-height: -size;
     -fx-max-width: -size;
 }
+
+
+.mineMessageAppearance {
+    -fx-background-color: white;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}
+
+.notmineMessageAppearance {
+    -fx-background-color: #90CAF9;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}

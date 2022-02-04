@@ -10,21 +10,17 @@
 
 <fx:root fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="300.0" style="-fx-background-color: #BBDEFB33;" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fx:id="avatarImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true">
-        <Image url="@../../../../assets/images/avatar_image_1.jpg" />
+        <Image url="@../../../../assets/images/default_chat_image.jpg" />
     </ImageView>
     <VBox HBox.hgrow="ALWAYS">
         <HBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
         </HBox.margin>
-        <Label text="Username">
+        <Label fx:id="chatName" text="Username">
             <font>
-                <Font size="18.0" />
+                <Font size="16.0" />
             </font>
         </Label>
-        <Label text="Last message">
-           <font>
-               <Font size="14.0" />
-           </font>
-        </Label>
+        <Label fx:id="chatLastMessage" text="Last message" />
     </VBox>
 </fx:root>

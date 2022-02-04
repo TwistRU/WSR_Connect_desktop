@@ -4,10 +4,10 @@ import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
-import javafx.scene.layout.VBox
 import javafx.scene.shape.Circle
 import ru.wsr.wsr_connect.chatComponents.ChatScreenController
 import ru.wsr.wsr_connect.profileComponents.ProfileScreenController
@@ -16,6 +16,8 @@ import ru.wsr.wsr_connect.tasksComponents.TablesScreenController
 import java.net.URL
 import java.util.*
 
+
+var user_id = -1
 
 class MainScreenController : BorderPane() {
 
@@ -44,6 +46,12 @@ class MainScreenController : BorderPane() {
 
     var Parent: MainContainer? = null
 
+
+
+    var chat_screen: ChatScreenController? = null
+    var taskmanager_screen: TablesScreenController? = null
+    var profile_screen: ProfileScreenController? = null
+
     @FXML
     fun initialize() {
 
@@ -60,6 +68,9 @@ class MainScreenController : BorderPane() {
         this.calendarButton.setOnAction { e -> taskmanager() }
         this.avatarButton.setOnAction { e -> profile() }
         this.gearButton.setOnAction { e -> settings() }
+
+
+        fetch_userinfo()
 
     }
 
@@ -98,18 +109,18 @@ class MainScreenController : BorderPane() {
 
 
     private fun messenger(){
-        val chat_screen = ChatScreenController()
+        chat_screen = ChatScreenController()
         this.center = chat_screen
     }
 
     private fun taskmanager(){
-        val taskmanager_screen = StartCompanyScreenController()
+        taskmanager_screen = StartCompanyScreenController()
 
         this.center = taskmanager_screen
     }
 
     private fun profile(){
-        val profile_screen = ProfileScreenController()
+        profile_screen = ProfileScreenController()
         this.center = profile_screen
     }
 
@@ -123,6 +134,19 @@ class MainScreenController : BorderPane() {
     fun logout(scope: MainContainer){
         scope.purge_data()
         scope.center = scope.login_screen
+    }
+
+    fun fetch_userinfo(){
+        APIObject.profileInfo {
+            user_id = it.user_id
+            if (it.img_url != null){
+                val path = it.img_url
+                APIObject.getFile(path) {
+                    println(it.path)
+                    avatarImage.image = Image(it.path)
+                }
+            }
+        }
     }
 
 }

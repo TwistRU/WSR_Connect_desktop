@@ -1,6 +1,5 @@
 package ru.wsr.wsr_connect.chatComponents
 
-import javafx.event.EventHandler
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.fxml.FXML
@@ -8,10 +7,8 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.text.Text
-import ru.wsr.wsr_connect.APIObject
 
-class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox() {
-
+class MessageForwardedController(msg_id: Int, cash_source: ChatSearchCard) : HBox() {
 
     @FXML
     private lateinit var resources: ResourceBundle
@@ -23,19 +20,28 @@ class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox()
     private lateinit var avatarImage: ImageView
 
     @FXML
+    lateinit var forwardedMessageText: Text
+
+    @FXML
+    lateinit var forwardedMessageUsername: Text
+
+    @FXML
+    lateinit var frwMsgBox: HBox
+
+    @FXML
     private lateinit var messageContainer: HBox
 
     @FXML
-    private lateinit var messageText: Text
+    lateinit var messageText: Text
 
     @FXML
-    private lateinit var root: HBox
+    lateinit var root: HBox
 
     @FXML
-    private lateinit var time: Text
+    lateinit var time: Text
 
     @FXML
-    private lateinit var username: Text
+    lateinit var username: Text
 
 
 
@@ -46,25 +52,27 @@ class MessageSimpleController(msg_id: Int, cash_source: ChatSearchCard) : HBox()
 
 
     init {
-        val fxmlLoader = FXMLLoader(javaClass.getResource("messageSimple.fxml"))
+        val fxmlLoader = FXMLLoader(javaClass.getResource("messageForwarded.fxml"))
         fxmlLoader.setRoot(this)
         fxmlLoader.setController(this)
         fxmlLoader.load<Any>()
 
+
         this.username.text = cash_source.cashed_messages[msg_id]?.creator_name ?: "Noname"
         this.messageText.text = cash_source.cashed_messages[msg_id]?.message_body ?: "Unknown text"
+        this.forwardedMessageUsername.text = cash_source.cashed_messages[msg_id]?.parent_message!!.creator_name
+        this.forwardedMessageText.text = cash_source.cashed_messages[msg_id]?.parent_message!!.message_body
 
         var t = cash_source.cashed_messages[msg_id]?.created_at
         this.time.text = t!!.substring(11, 16)
 
+
 //        this.username.text = username
 //        this.messageText.text = msgText
-//        this.message_id = msg_id
+//        this.forwardedMessageUsername.text = frwMsgUsername
+//        this.forwardedMessageText.text = frwMsgText
 //        this.time.text = time
-//        if (mine == true){
-//        }
+
     }
-
-
 
 }

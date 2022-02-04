@@ -5,10 +5,12 @@ import java.util.ResourceBundle
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
+import javafx.scene.image.Image
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
+import ru.wsr.wsr_connect.APIObject
 
 
 class ChatScreenController() : BorderPane() {
@@ -29,9 +31,6 @@ class ChatScreenController() : BorderPane() {
     private lateinit var resultList: VBox
 
     @FXML
-    private lateinit var resultsBox: BorderPane
-
-    @FXML
     private lateinit var root: BorderPane
 
     @FXML
@@ -39,31 +38,34 @@ class ChatScreenController() : BorderPane() {
 
 
 
-    val messagesWindow = null
-
-    var users = arrayListOf<ChatSearchUser>(
-        ChatSearchUser(),
-        ChatSearchUser()
-    )
-
-    var dialogs = arrayListOf<ChatSearchCard>(
-        ChatSearchCard(),
-        ChatSearchCard()
-    )
+    var messageWindow: ChatMessagesWindowCOntroller? = null
 
     @FXML
     fun initialize() {
         makeSearchButton()
         addMessangerBar()
-        for (user in users){
-            resultList.children.add(user)
-            user.setOnMouseClicked { e -> user.get_chat( this) }
+
+        APIObject.profileInfo {
+            this.nameField.text = it.username
         }
-        for (dialog in dialogs){
-            resultList.children.add(dialog)
+
+        APIObject.getChats {
+            for (chat in it.chats) {
+                val curChat = ChatSearchCard()
+                curChat.chatName.text = chat.chat_name
+                curChat.chatLastMessage.text = chat.last_message?.message_body
+                curChat.chat_id = chat.chat_id
+                curChat.Parent = messageWindow
+
+                if (chat.last_message?.img_url != null){
+                    APIObject.getFile(chat.last_message.img_url){
+                        curChat.avatarImage.image = Image(it.path)
+                    }
+                }
+                resultList.children.add(curChat)
+            }
         }
     }
-
     init {
         val fxmlLoader = FXMLLoader(javaClass.getResource("chatScreen.fxml"))
         fxmlLoader.setRoot(this)
@@ -78,8 +80,8 @@ class ChatScreenController() : BorderPane() {
     }
 
     fun addMessangerBar(){
-        val messages_window = ChatMessagesWindowCOntroller()
-        this.center = messages_window
+        messageWindow = ChatMessagesWindowCOntroller()
+        this.center = messageWindow
     }
 
 }
