@@ -16,7 +16,7 @@ import ru.wsr.wsr_connect.SimpleChatMessageRequest
 import ru.wsr.wsr_connect.user_id
 import java.io.File
 
-class ChatMessagesWindowCOntroller : ScrollPane() {
+class ChatMessagesWindowCOntroller : VBox() {
 
 
     @FXML
