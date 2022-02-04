@@ -104,6 +104,7 @@ class MainScreenController : BorderPane() {
 
     private fun taskmanager(){
         val taskmanager_screen = StartCompanyScreenController()
+
         this.center = taskmanager_screen
     }
 
